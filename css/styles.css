@@ -1,0 +1,227 @@
+/* =========================================================
+   Proyecto ACS · Hoja de estilos
+   Estilo inspirado en concepto.de: encabezado naranja,
+   barra de navegación blanca, tarjetas blancas sobre fondo
+   gris claro, títulos en Playfair Display y texto en Montserrat.
+   ========================================================= */
+
+/* ---------- 1. Variables (tokens de diseño) ---------- */
+:root {
+  --naranja: #e84e2b;
+  --naranja-claro: #fa685b;
+  --naranja-suave: #fdeee9;
+  --azul: #2bc5e8;
+  --azul-oscuro: #1688a3;
+  --amarillo: #f7e731;
+  --fondo: #f4f5f7;
+  --blanco: #ffffff;
+  --texto: #111111;
+  --texto-suave: #555b66;
+  --borde: #dddddd;
+  --codigo-fondo: #1e2230;
+  --codigo-texto: #e9ecf2;
+
+  --fuente-titulos: "Playfair Display", Georgia, serif;
+  --fuente-texto: "Montserrat", Arial, sans-serif;
+  --fuente-codigo: "JetBrains Mono", Consolas, monospace;
+
+  --radio: .75em;
+  --radio-sm: 8px;
+  --sombra: 0 0 5px rgba(0, 0, 0, .2);
+  --sombra-hover: 0 .5em 20px rgba(0, 0, 0, .18);
+  --alto-header: 4rem;
+  --ancho-contenido: 1150px;
+  --espacio: 4vw;
+}
+
+/* ---------- 2. Reset básico ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--alto-header) * 2 + 1rem); }
+body {
+  margin: 0;
+  font-family: var(--fuente-texto);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--texto);
+  background: var(--fondo);
+  padding-top: calc(var(--alto-header) * 2);
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--naranja); transition: color .125s; }
+a:hover { color: var(--azul-oscuro); }
+code { font-family: var(--fuente-codigo); font-size: .88em; background: var(--naranja-suave); color: #b23a1d; padding: .1em .35em; border-radius: 4px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+h1, h2, h3, h4 { font-family: var(--fuente-titulos); font-weight: 500; letter-spacing: -.01em; line-height: 1.15; margin: 0 0 .6em; }
+h1 { font-size: 2.3rem; }
+h2 { font-size: 1.85rem; }
+h3 { font-size: 1.3rem; margin-top: 1.6em; }
+h4 { font-size: 1.05rem; font-family: var(--fuente-texto); font-weight: 600; }
+p { margin: 0 0 1em; }
+
+/* ---------- 3. Barra de progreso de lectura ---------- */
+.barra-progreso { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: var(--amarillo); z-index: 200; }
+
+/* ---------- 4. Encabezado naranja ---------- */
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: var(--alto-header);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 var(--espacio);
+  background: var(--naranja); color: var(--blanco);
+}
+.logo { display: flex; align-items: center; gap: .6rem; color: var(--blanco); text-decoration: none; }
+.logo:hover { color: var(--blanco); }
+.logo-texto { font-family: var(--fuente-titulos); font-size: 1.5rem; font-weight: 700; line-height: 1; }
+.logo-texto small { display: block; font-family: var(--fuente-texto); font-size: .68rem; font-weight: 500; letter-spacing: .04em; opacity: .9; margin-top: .2rem; }
+.btn-menu { display: none; background: none; border: 0; cursor: pointer; padding: .5rem; }
+.btn-menu span:not(.sr-only) { display: block; width: 24px; height: 2px; background: var(--blanco); margin: 5px 0; transition: transform .2s; }
+
+/* ---------- 5. Navegación blanca ---------- */
+.main-navigation {
+  position: fixed; top: var(--alto-header); left: 0; right: 0; z-index: 99;
+  height: var(--alto-header);
+  background: var(--blanco);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .05);
+}
+.main-navigation ul { list-style: none; margin: 0 auto; padding: 0 var(--espacio); display: flex; height: 100%; max-width: calc(var(--ancho-contenido) + var(--espacio) * 2); overflow-x: auto; scrollbar-width: none; }
+.main-navigation ul::-webkit-scrollbar { display: none; }
+.main-navigation a {
+  display: flex; align-items: center; height: 100%; padding: 0 .9rem;
+  color: var(--texto); text-decoration: none; font-size: .85rem; font-weight: 600; white-space: nowrap;
+  border-top: 2px solid transparent; transition: border-color .2s, color .2s;
+}
+.main-navigation a:hover, .main-navigation a.activo { color: var(--naranja); border-top-color: var(--naranja); }
+
+/* ---------- 6. Contenedor y diseño en dos columnas ---------- */
+.contenedor { max-width: calc(var(--ancho-contenido) + var(--espacio) * 2); margin: 0 auto; padding: 1.5rem var(--espacio) 3rem; }
+.breadcrumbs { font-size: .8rem; color: var(--texto-suave); margin-bottom: 1rem; }
+.breadcrumbs a { color: var(--naranja); text-decoration: none; font-weight: 600; }
+.layout { display: grid; grid-template-columns: minmax(0, 1fr) 20em; gap: 2rem; align-items: start; }
+.articulo { min-width: 0; }
+
+/* ---------- 7. Portada ---------- */
+.portada { background: var(--blanco); border-radius: var(--radio); box-shadow: var(--sombra); padding: 2rem; margin-bottom: 1.5rem; }
+.etiqueta { display: inline-block; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--naranja); margin-bottom: .6rem; }
+.entradilla { font-size: 1.1rem; color: var(--texto-suave); }
+.imagen-destacada { margin: 1.5rem 0 0; }
+.imagen-destacada img { width: 100%; border-radius: var(--radio); }
+figcaption { font-style: italic; font-size: .85rem; color: var(--texto-suave); margin-top: .6rem; }
+
+/* ---------- 8. Secciones como tarjetas ---------- */
+.seccion { background: var(--blanco); border-radius: var(--radio); box-shadow: var(--sombra); padding: 2rem; margin-bottom: 1.5rem; }
+.seccion > h2 { padding-bottom: .5rem; border-bottom: 3px solid var(--naranja); display: inline-block; }
+.subtitulo-seccion { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--azul-oscuro); margin-top: -.3rem; }
+.seccion.pendiente { border: 2px dashed var(--borde); box-shadow: none; background: transparent; }
+.pendiente-nota { color: var(--texto-suave); font-style: italic; }
+
+/* ---------- 9. Componentes compartidos ---------- */
+.definicion { border-left: 5px solid var(--naranja); background: var(--naranja-suave); border-radius: 0 10px 10px 0; padding: 1rem 1.25rem; margin: 1.5rem 0; }
+.definicion-titulo, .ejemplo-titulo, .citar-titulo { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--naranja); margin-bottom: .4rem; }
+.definicion p:last-child { margin: 0; }
+.nota { font-size: .92rem; background: var(--fondo); border-radius: var(--radio-sm); padding: .9rem 1.1rem; }
+.ejemplo { border: 1px solid var(--borde); border-top: 4px solid var(--azul); border-radius: var(--radio); padding: 1.25rem; margin: 1.5rem 0; }
+.ejemplo img { margin: .5rem 0 1rem; }
+.ejemplo-titulo { color: var(--azul-oscuro); }
+.codigo { background: var(--codigo-fondo); color: var(--codigo-texto); font-family: var(--fuente-codigo); font-size: .82rem; line-height: 1.55; border-radius: var(--radio-sm); padding: 1rem 1.2rem; overflow-x: auto; }
+.codigo code { background: none; color: inherit; padding: 0; font-size: 1em; }
+.c-comando { color: var(--amarillo); }
+
+.tabla-scroll { overflow-x: auto; margin: 1rem 0 1.5rem; border-radius: var(--radio-sm); box-shadow: 0 0 3px rgba(0, 0, 0, .1); }
+table { width: 100%; border-collapse: collapse; font-size: .9rem; background: var(--blanco); }
+th { background: var(--azul); color: var(--texto); text-align: left; padding: .7rem .9rem; font-weight: 700; }
+td { padding: .65rem .9rem; border-top: 1px solid var(--borde); vertical-align: top; }
+tbody tr:nth-child(even) { background: #f7f7f7; }
+
+.tarjeta { background: var(--blanco); border-radius: var(--radio); box-shadow: var(--sombra); padding: 1.25rem; }
+.tarjeta-etiqueta { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--naranja); margin-bottom: .2rem; }
+.tarjeta h3 { margin-top: 0; }
+.ejemplo-linea { font-size: .9rem; color: var(--texto-suave); margin: 0; }
+.comparacion { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin: 1rem 0 1.5rem; }
+.comparacion .tarjeta { transition: transform .2s, box-shadow .2s; }
+.comparacion .tarjeta:hover { transform: translateY(-3px); box-shadow: var(--sombra-hover); }
+
+.tarjetas-mini { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1rem 0 1.5rem; }
+.mini { border: 1px solid var(--borde); border-radius: var(--radio); padding: 1rem; font-size: .9rem; transition: background .2s, color .2s; }
+.mini p { margin: 0; }
+.mini-sigla { font-family: var(--fuente-titulos); font-size: 1.5rem; color: var(--naranja); margin-bottom: .3rem !important; }
+.mini:hover { background: var(--naranja); color: var(--blanco); }
+.mini:hover .mini-sigla { color: var(--blanco); }
+
+.lista-check { list-style: none; padding: 0; }
+.lista-check li { position: relative; padding-left: 1.8rem; margin-bottom: .5rem; }
+.lista-check li::before { content: "✓"; position: absolute; left: 0; top: 0; width: 1.25rem; height: 1.25rem; border-radius: 999em; background: var(--naranja); color: var(--blanco); font-size: .75rem; display: grid; place-items: center; margin-top: .25rem; }
+
+.btn { font-family: var(--fuente-texto); font-size: .88rem; font-weight: 600; padding: .55rem 1rem; border-radius: var(--radio-sm); border: 2px solid var(--naranja); background: var(--blanco); color: var(--naranja); cursor: pointer; transition: background .15s, color .15s; }
+.btn:hover:not(:disabled) { background: var(--naranja); color: var(--blanco); }
+.btn:disabled { opacity: .4; cursor: not-allowed; }
+.btn-primario { background: var(--naranja); color: var(--blanco); }
+.btn-primario:hover:not(:disabled) { background: #c93f1f; border-color: #c93f1f; }
+:focus-visible { outline: 3px solid var(--azul); outline-offset: 2px; }
+
+/* ---------- 10. Barra lateral ---------- */
+.lateral { position: sticky; top: calc(var(--alto-header) * 2 + 1.5rem); display: grid; gap: 1.25rem; }
+.widget-title { font-family: var(--fuente-texto); font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--naranja); margin: 0 0 .8rem; }
+.toc ol { margin: 0; padding-left: 1.2rem; font-size: .88rem; }
+.toc li { margin-bottom: .3rem; }
+.toc a { color: var(--texto); text-decoration: none; }
+.toc a:hover, .toc a.activo { color: var(--naranja); font-weight: 600; }
+.ficha dl { margin: 0; font-size: .85rem; }
+.ficha dt { font-weight: 700; color: var(--texto-suave); font-size: .72rem; text-transform: uppercase; letter-spacing: .05em; }
+.ficha dd { margin: 0 0 .7rem; }
+
+/* ---------- 11. Widget "¿Te fue útil?" ---------- */
+.util { text-align: center; background: var(--blanco); border-radius: var(--radio); box-shadow: var(--sombra); padding: 1.5rem; }
+.util-titulo { font-size: 1.2rem; display: block; border: 0; }
+.util-botones { display: flex; justify-content: center; gap: .75rem; }
+.btn-util { font-family: var(--fuente-texto); font-weight: 700; min-width: 5rem; padding: .5rem 1rem; border-radius: 999em; border: 2px solid var(--naranja); background: var(--blanco); color: var(--naranja); cursor: pointer; }
+.btn-util:hover, .btn-util.elegido { background: var(--naranja); color: var(--blanco); }
+.util-gracias { margin: .8rem 0 0; color: var(--azul-oscuro); font-weight: 600; }
+
+/* ---------- 12. Pie de página naranja ---------- */
+.site-footer { background: var(--naranja); color: var(--blanco); padding: 3rem var(--espacio); display: grid; gap: 1.5rem; text-align: center; }
+.footer-marca { display: flex; flex-direction: column; align-items: center; gap: .6rem; }
+.footer-marca p, .footer-info p { margin: 0 0 .3rem; font-size: .9rem; }
+.footer-marca strong { font-family: var(--fuente-titulos); font-size: 1.3rem; font-weight: 600; }
+
+.btn-arriba { position: fixed; right: 1.25rem; bottom: 1.25rem; width: 3rem; height: 3rem; border-radius: 999em; border: 0; background: var(--naranja); color: var(--blanco); font-size: 1.3rem; box-shadow: var(--sombra-hover); cursor: pointer; z-index: 90; }
+
+/* ---------- 13. Animación de aparición ---------- */
+.revelar { opacity: 0; transform: translateY(16px); transition: opacity .5s, transform .5s; }
+.revelar.visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .revelar { opacity: 1; transform: none; transition: none; }
+}
+
+/* ===== INICIO: estilos de la parte 1 (rama-johansell) ===== */
+/* pendiente */
+/* ===== FIN: estilos de la parte 1 ===== */
+
+/* ===== INICIO: estilos de la parte 2 (rama-companero) ===== */
+/* pendiente */
+/* ===== FIN: estilos de la parte 2 ===== */
+
+/* ---------- Diseño adaptable (responsive) ---------- */
+@media (min-width: 70em) {
+  h1 { font-size: 2.7rem; }
+  .site-footer { grid-template-columns: 1fr 1fr; text-align: left; align-items: center; }
+  .footer-marca { flex-direction: row; }
+}
+@media (max-width: 64em) {
+  .layout { grid-template-columns: 1fr; }
+  .lateral { position: static; }
+  .toc { display: none; }
+}
+@media (max-width: 48em) {
+  body { padding-top: var(--alto-header); }
+  html { scroll-padding-top: calc(var(--alto-header) + 1rem); }
+  .btn-menu { display: block; }
+  .main-navigation { height: auto; transform: translateX(100%); transition: transform .25s; background: var(--fondo); bottom: 0; top: var(--alto-header); }
+  .main-navigation.abierto { transform: none; }
+  .main-navigation ul { flex-direction: column; height: auto; padding: 1rem var(--espacio); }
+  .main-navigation a { height: auto; padding: .9rem 0; border-top: 0; border-bottom: 1px solid var(--borde); font-size: 1rem; }
+  .portada, .seccion { padding: 1.25rem; }
+  h1 { font-size: 1.9rem; }
+  h2 { font-size: 1.5rem; }
+}
