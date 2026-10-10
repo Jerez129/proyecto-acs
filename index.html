@@ -59,38 +59,224 @@
         </header>
 
 <!-- ▼ SECCIÓN: intro · responsable: Johansell Alfonso Pérez Feliz -->
-        <section id="intro" class="seccion pendiente">
+       <section id="intro" class="seccion">
           <h2>Introducción</h2>
-          <p class="pendiente-nota">Sección en desarrollo en la rama <code>rama-johansell</code>.</p>
+          <p>En cualquier proyecto de software el cambio es constante: el cliente pide algo nuevo, se descubre un error, el equipo mejora el diseño o cambia una tecnología. El problema no es que haya cambios, sino que ocurran <strong>sin control</strong>. Cuando nadie sabe qué versión es la correcta, quién modificó un archivo o por qué dejó de funcionar algo que antes funcionaba, el proyecto se vuelve caótico.</p>
+          <p>La <strong>Administración de la Configuración del Software (ACS)</strong>, conocida en inglés como <em>Software Configuration Management (SCM)</em>, es el conjunto de actividades que sirven para gestionar ese cambio durante toda la vida del software. No busca impedir que el software cambie, sino que cada cambio sea <strong>identificado, evaluado, registrado y comunicado</strong>.</p>
+
+          <div class="definicion">
+            <p class="definicion-titulo">Definición</p>
+            <p>La ACS es una actividad de protección que se aplica a lo largo de todo el proceso de software para identificar los elementos que pueden cambiar, controlar esos cambios, asegurar que se implementen correctamente e informar a todas las personas interesadas.</p>
+          </div>
+
+          <h3>Conceptos clave antes de empezar</h3>
+          <div class="tarjetas-mini">
+            <div class="mini">
+              <p class="mini-sigla">ICS</p>
+              <p><strong>Ítem de Configuración del Software.</strong> Cualquier producto de trabajo que se controla: un documento de requisitos, un diagrama, un archivo de código o un caso de prueba.</p>
+            </div>
+            <div class="mini">
+              <p class="mini-sigla">Línea base</p>
+              <p><strong>Línea de referencia.</strong> Un ICS que ya fue revisado y aprobado. A partir de ese momento solo puede cambiar mediante un procedimiento formal.</p>
+            </div>
+            <div class="mini">
+              <p class="mini-sigla">Repositorio</p>
+              <p><strong>Base de datos del proyecto.</strong> El lugar donde se guardan todos los ICS, sus versiones y las relaciones entre ellos.</p>
+            </div>
+          </div>
+
+          <p class="nota">En este resumen se explica la <strong>sección 22.3: El proceso ACS</strong>, que describe las cinco tareas con las que se administra la configuración: identificación, control de versión, control de cambio, auditoría y reporte de estado.</p>
         </section>
+
 <!-- ▲ FIN SECCIÓN: intro -->
 
 <!-- ▼ SECCIÓN: proceso · responsable: Johansell Alfonso Pérez Feliz -->
-        <section id="proceso" class="seccion pendiente">
+         <section id="proceso" class="seccion">
           <h2>El proceso ACS</h2>
-          <p class="pendiente-nota">Sección en desarrollo en la rama <code>rama-johansell</code>.</p>
+          <p>Pressman explica que el proceso ACS es una serie de tareas organizadas que persiguen <strong>cuatro objetivos</strong>. Lo importante es que este proceso no tiene que ser burocrático ni pesado: debe ser lo suficientemente claro como para que el equipo sepa cómo actuar ante cualquier cambio.</p>
+
+          <ol class="objetivos">
+            <li><span class="num">1</span><div><strong>Identificar</strong> todos los ítems que, en conjunto, forman la configuración del software.</div></li>
+            <li><span class="num">2</span><div><strong>Gestionar los cambios</strong> que se hagan a uno o varios de esos ítems.</div></li>
+            <li><span class="num">3</span><div><strong>Facilitar la construcción</strong> de diferentes versiones de una aplicación.</div></li>
+            <li><span class="num">4</span><div><strong>Garantizar la calidad</strong> del software mientras la configuración evoluciona con el tiempo.</div></li>
+          </ol>
+
+          <h3>Las preguntas que el proceso debe responder</h3>
+          <p>Para cumplir esos objetivos, un equipo necesita respuestas claras a estas preguntas. Cada una se relaciona con una tarea de ACS:</p>
+          <div class="tabla-scroll">
+            <table>
+              <thead>
+                <tr><th>Pregunta</th><th>Tarea ACS que la responde</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>¿Cómo se identifican los elementos individuales de la configuración?</td><td>Identificación</td></tr>
+                <tr><td>¿Cómo se manejan las muchas versiones de un programa y su documentación?</td><td>Control de versión</td></tr>
+                <tr><td>¿Cómo se controlan los cambios antes y después de entregar el software al cliente?</td><td>Control de cambio</td></tr>
+                <tr><td>¿Quién aprueba y prioriza los cambios solicitados?</td><td>Control de cambio (ACC)</td></tr>
+                <tr><td>¿Cómo se garantiza que los cambios se hicieron bien?</td><td>Auditoría de la configuración</td></tr>
+                <tr><td>¿Cómo se informa a los demás sobre los cambios realizados?</td><td>Reporte de estado</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <blockquote class="cita">
+            <p>Cualquier cambio, incluso uno para mejorar, trae consigo incomodidades.</p>
+            <footer>Idea de Arnold Bennett, citada por Pressman</footer>
+          </blockquote>
         </section>
+
 <!-- ▲ FIN SECCIÓN: proceso -->
 
 <!-- ▼ SECCIÓN: capas · responsable: Johansell Alfonso Pérez Feliz -->
-        <section id="capas" class="seccion pendiente">
+               <section id="capas" class="seccion">
           <h2>Las cinco capas del proceso ACS</h2>
-          <p class="pendiente-nota">Sección en desarrollo en la rama <code>rama-johansell</code>.</p>
+          <p>De esas preguntas salen las <strong>cinco tareas de la ACS</strong>. Pressman las dibuja como <strong>capas concéntricas</strong>, igual que las capas de una cebolla (figura 22.4). Los ICS nacen en el centro y, durante su vida útil, se mueven hacia afuera atravesando cada capa, hasta formar parte de una versión del software (<code>Vm.n</code>).</p>
+          <p>No todas las capas se aplican siempre. Por ejemplo, un ICS nuevo <em>siempre</em> se identifica, pero si nadie pide cambiarlo, la capa de control de cambio no interviene.</p>
+
+          <div class="capas-interactivo">
+            <figure class="capas-figura">
+              <svg viewBox="0 0 400 400" role="group" aria-label="Diagrama de capas concéntricas del proceso ACS">
+                <g class="anillo" data-capa="reporte" tabindex="0" role="button" aria-label="Capa: Reporte de estado">
+                  <circle cx="200" cy="200" r="190"/><text x="200" y="32">Reporte</text>
+                </g>
+                <g class="anillo" data-capa="auditoria" tabindex="0" role="button" aria-label="Capa: Auditoría de la configuración">
+                  <circle cx="200" cy="200" r="158"/><text x="200" y="64">Auditoría</text>
+                </g>
+                <g class="anillo" data-capa="version" tabindex="0" role="button" aria-label="Capa: Control de versión">
+                  <circle cx="200" cy="200" r="126"/><text x="200" y="96">Control de versión</text>
+                </g>
+                <g class="anillo" data-capa="cambio" tabindex="0" role="button" aria-label="Capa: Control de cambio">
+                  <circle cx="200" cy="200" r="94"/><text x="200" y="128">Control de cambio</text>
+                </g>
+                <g class="anillo" data-capa="identificacion" tabindex="0" role="button" aria-label="Capa: Identificación">
+                  <circle cx="200" cy="200" r="62"/><text x="200" y="160">Identificación</text>
+                </g>
+                <g class="nucleo" data-capa="ics" tabindex="0" role="button" aria-label="Centro: ICS">
+                  <circle cx="200" cy="200" r="30"/><text x="200" y="205">ICS</text>
+                </g>
+              </svg>
+              <figcaption>Haz clic en una capa para ver qué hace. Basado en la figura 22.4 de Pressman.</figcaption>
+            </figure>
+
+            <div class="capas-panel" id="capasPanel" aria-live="polite">
+              <p class="capas-panel-etiqueta">Capa seleccionada</p>
+              <h3 id="capasTitulo">Selecciona una capa</h3>
+              <p id="capasTexto">Cada anillo representa una tarea de la ACS. Empieza por el centro (ICS) y avanza hacia afuera para seguir el recorrido de un ítem.</p>
+              <p class="capas-ejemplo" id="capasEjemplo" hidden></p>
+            </div>
+          </div>
         </section>
+
 <!-- ▲ FIN SECCIÓN: capas -->
 
 <!-- ▼ SECCIÓN: identificacion · responsable: Johansell Alfonso Pérez Feliz -->
-        <section id="identificacion" class="seccion pendiente">
+              <section id="identificacion" class="seccion">
           <h2>Identificación de objetos de la configuración</h2>
-          <p class="pendiente-nota">Sección en desarrollo en la rama <code>rama-johansell</code>.</p>
+          <p class="subtitulo-seccion">Sección 22.3.1</p>
+          <p>No se puede controlar algo que no tiene nombre. Por eso, el primer paso es <strong>nombrar cada ICS de forma única</strong> y organizarlo con un enfoque orientado a objetos. Pressman distingue dos tipos de objetos:</p>
+
+          <div class="comparacion">
+            <div class="tarjeta">
+              <p class="tarjeta-etiqueta">Tipo 1</p>
+              <h3>Objeto básico</h3>
+              <p>Una <strong>unidad de información</strong> creada durante el análisis, el diseño, la codificación o la prueba.</p>
+              <p class="ejemplo-linea"><strong>Ejemplos:</strong> una sección de la especificación de requisitos, el código de un componente, un conjunto de casos de prueba.</p>
+            </div>
+            <div class="tarjeta">
+              <p class="tarjeta-etiqueta">Tipo 2</p>
+              <h3>Objeto agregado</h3>
+              <p>Una <strong>colección</strong> de objetos básicos y de otros objetos agregados. Funciona como una lista con nombre de punteros hacia sus partes.</p>
+              <p class="ejemplo-linea"><strong>Ejemplo:</strong> una <em>Especificación de diseño</em> que agrupa el modelo arquitectónico, el modelo de datos y varios diagramas de clase.</p>
+            </div>
+          </div>
+
+          <h3>¿Qué características identifican a un objeto?</h3>
+          <div class="tabla-scroll">
+            <table>
+              <thead><tr><th>Característica</th><th>Qué significa</th><th>Ejemplo en este proyecto</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Nombre</strong></td><td>Cadena de texto que identifica el objeto sin ambigüedad.</td><td><code>css/styles.css</code></td></tr>
+                <tr><td><strong>Descripción</strong></td><td>Datos que indican el tipo de ICS, el proyecto al que pertenece y su información de cambio o versión.</td><td>Hoja de estilos · proyecto-acs · v1.0</td></tr>
+                <tr><td><strong>Recursos</strong></td><td>Lo que el objeto usa, procesa o necesita: tipos de datos, funciones o variables.</td><td>Variables CSS como <code>--naranja</code></td></tr>
+                <tr><td><strong>Realización</strong></td><td>Puntero al contenido real (la "unidad de texto"). En un objeto agregado es nulo, porque solo agrupa a otros.</td><td>El texto del archivo</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Relaciones entre objetos</h3>
+          <p>Identificar también significa registrar <strong>cómo se relacionan</strong> los objetos. Con una notación sencilla se puede construir una jerarquía:</p>
+          <pre class="codigo"><code>DiagramaClase      &lt;parte de&gt;          ModeloRequisitos
+ModeloRequisitos   &lt;parte de&gt;          EspecificaciónRequisitos
+ModeloDatos        &lt;interrelacionado&gt;  ModeloFlujoDatos
+ModeloDatos        &lt;interrelacionado&gt;  CasoPruebaClaseM</code></pre>
+          <p>La relación <code>&lt;parte de&gt;</code> crea la jerarquía. La relación <code>&lt;interrelacionado&gt;</code> conecta objetos de ramas distintas de esa jerarquía. Estas relaciones son muy útiles para <strong>analizar el impacto de un cambio</strong>: si se modifica el modelo de datos, se sabe qué otros objetos hay que revisar.</p>
+
+          <div class="ejemplo">
+            <p class="ejemplo-titulo">Ejemplo aplicado: nuestro repositorio</p>
+            <img src="assets/images/jerarquia-ics.svg" alt="Jerarquía de ICS del proyecto: el sitio web es un objeto agregado que contiene index.html, la carpeta css, la carpeta js y la carpeta assets" width="720" height="300" loading="lazy">
+            <p>El <strong>sitio web</strong> completo es un objeto agregado. <code>index.html</code>, <code>styles.css</code> y <code>script.js</code> son objetos básicos. Git identifica cada versión de cada archivo con un código único (el <em>hash</em> del commit).</p>
+          </div>
+
+          <p class="nota">Los objetos evolucionan: antes de convertirse en línea base pueden cambiar muchas veces, e incluso después de ser aprobados siguen recibiendo cambios. El esquema de identificación debe tenerlo en cuenta.</p>
         </section>
+
 <!-- ▲ FIN SECCIÓN: identificacion -->
 
 <!-- ▼ SECCIÓN: version · responsable: Johansell Alfonso Pérez Feliz -->
-        <section id="version" class="seccion pendiente">
+              <section id="version" class="seccion">
           <h2>Control de versión</h2>
-          <p class="pendiente-nota">Sección en desarrollo en la rama <code>rama-johansell</code>.</p>
+          <p class="subtitulo-seccion">Sección 22.3.2</p>
+          <p>El control de versión combina <strong>procedimientos y herramientas</strong> para administrar las distintas versiones de los objetos de configuración que se crean durante el proceso de software. Gracias a él se puede volver a cualquier estado anterior del proyecto o construir una versión específica cuando se necesite.</p>
+
+          <h3>Capacidades de un sistema de control de versión</h3>
+          <div class="capacidades">
+            <div class="capacidad"><span class="cap-icono" aria-hidden="true">🗄️</span><h4>Repositorio</h4><p>Base de datos del proyecto que guarda todos los objetos de configuración relevantes.</p></div>
+            <div class="capacidad"><span class="cap-icono" aria-hidden="true">🕓</span><h4>Gestión de versiones</h4><p>Guarda todas las versiones de cada objeto, o las reconstruye a partir de las diferencias con versiones anteriores.</p></div>
+            <div class="capacidad"><span class="cap-icono" aria-hidden="true">🛠️</span><h4>Facilidad de construcción</h4><p>Reúne los objetos correctos y construye una versión específica del software.</p></div>
+            <div class="capacidad"><span class="cap-icono" aria-hidden="true">🐞</span><h4>Rastreo de problemas</h4><p>Registra el estado de los errores y conflictos pendientes de cada objeto (rastreador de errores).</p></div>
+          </div>
+
+          <h3>Conjuntos de cambio y modelo del sistema</h3>
+          <p>Algunos sistemas trabajan con <strong>conjuntos de cambio</strong> (<em>change sets</em>): la colección de todos los cambios necesarios para crear una versión concreta a partir de una configuración base. Un conjunto de cambio registra <strong>qué cambió en cada archivo, por qué, quién lo hizo y cuándo</strong>.</p>
+          <p>Si a esos conjuntos se les da un nombre, se puede construir una versión indicando qué conjuntos aplicar sobre la base. Para eso se usa un <strong>modelo del sistema</strong>, que contiene:</p>
+          <ul class="lista-check">
+            <li>Una <strong>plantilla</strong> con la jerarquía de componentes y el orden en que deben construirse.</li>
+            <li>Las <strong>reglas de construcción</strong>.</li>
+            <li>Las <strong>reglas de verificación</strong>.</li>
+          </ul>
+
+          <div class="ejemplo">
+            <p class="ejemplo-titulo">Ejemplo: un commit es un conjunto de cambio</p>
+            <pre class="codigo"><code><span class="c-comando">$ git show --stat a1b2c3d</span>
+commit a1b2c3d
+Author: Johansell Alfonso Pérez Feliz
+Date:   Sat Oct 10 2026
+
+    feat: agrega sección de control de versión
+
+ index.html     | 48 ++++++++++++
+ css/styles.css | 22 ++++++
+ 2 files changed, 70 insertions(+)</code></pre>
+            <p>Un solo commit agrupa los cambios en varios archivos y guarda <strong>quién, cuándo y por qué</strong>, justo lo que Pressman describe como conjunto de cambio.</p>
+          </div>
+
+          <h3>De CVS a Git</h3>
+          <p>Pressman presenta el <strong>Sistema de Versiones Concurrentes (CVS)</strong> como herramienta representativa. Hoy la herramienta más usada es Git, que sigue las mismas ideas pero las lleva más lejos:</p>
+          <div class="tabla-scroll">
+            <table>
+              <thead><tr><th>Aspecto</th><th>CVS (según Pressman)</th><th>Git (actual)</th></tr></thead>
+              <tbody>
+                <tr><td>Repositorio</td><td>Un repositorio central (cliente-servidor).</td><td>Distribuido: cada desarrollador tiene una copia completa.</td></tr>
+                <tr><td>Almacenamiento</td><td>Guarda solo las diferencias entre versiones de un archivo.</td><td>Guarda "fotos" (snapshots) del proyecto completo en cada commit.</td></tr>
+                <tr><td>Trabajo en paralelo</td><td>Aísla a cada desarrollador en su propio directorio y luego mezcla los cambios.</td><td>Usa ramas (<em>branches</em>) ligeras y luego las integra con <code>merge</code>.</td></tr>
+                <tr><td>Construcción</td><td>No construye versiones; necesita herramientas como Makefile.</td><td>Tampoco construye; se apoya en herramientas de integración continua (por ejemplo, GitHub Actions).</td></tr>
+                <tr><td>Control de cambio</td><td>No implementa solicitudes de cambio ni rastreo de errores.</td><td>Git tampoco, pero GitHub lo completa con Issues y Pull Requests.</td></tr>
+              </tbody>
+            </table>
+          </div>
         </section>
+
 <!-- ▲ FIN SECCIÓN: version -->
 
 <!-- ▼ SECCIÓN: cambio · responsable: (compañero) -->

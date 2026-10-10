@@ -94,7 +94,73 @@
 })();
 
 /* ===== INICIO: scripts de la parte 1 (rama-johansell) ===== */
-/* pendiente */
+/* ---------- Diagrama interactivo de capas ---------- */
+(function capasACS() {
+  const panel = document.getElementById("capasPanel");
+  if (!panel) return;
+
+  const info = {
+    ics: {
+      titulo: "ICS: el centro",
+      texto: "Los Ítems de Configuración del Software son los productos de trabajo que se controlan: documentos, modelos, código y pruebas. Todo el proceso gira alrededor de ellos.",
+      ejemplo: "En nuestro proyecto: index.html, styles.css, script.js y las imágenes."
+    },
+    identificacion: {
+      titulo: "1. Identificación",
+      texto: "Cada ICS recibe un nombre único y se organiza como objeto básico o agregado, registrando sus relaciones con otros objetos. Se aplica siempre que nace un ICS.",
+      ejemplo: "En Git: la ruta del archivo y el hash de cada commit identifican sin ambigüedad cada versión."
+    },
+    cambio: {
+      titulo: "2. Control de cambio",
+      texto: "Las peticiones de cambio se evalúan, la Autoridad de Control de Cambio (ACC) decide y, si aprueba, se emite una Orden de Cambio de Ingeniería (OCI). Si nadie pide cambiar el ICS, esta capa no interviene.",
+      ejemplo: "En GitHub: un Issue es la petición y un Pull Request aprobado funciona como la OCI."
+    },
+    version: {
+      titulo: "3. Control de versión",
+      texto: "Se guardan todas las versiones de cada objeto y se puede construir cualquier versión específica del software. El ICS queda asignado a una versión concreta.",
+      ejemplo: "En Git: commits, ramas y etiquetas como v1.0."
+    },
+    auditoria: {
+      titulo: "4. Auditoría de la configuración",
+      texto: "Se comprueba que el cambio se hizo como pedía la OCI, que se siguieron los estándares y que los ICS relacionados también se actualizaron.",
+      ejemplo: "En GitHub: la revisión del Pull Request antes de hacer merge."
+    },
+    reporte: {
+      titulo: "5. Reporte de estado",
+      texto: "Se informa qué pasó, quién lo hizo, cuándo y qué más se ve afectado, para que todo el equipo esté al tanto.",
+      ejemplo: "En Git: git log, el historial de commits y la pestaña Insights → Network."
+    }
+  };
+
+  const titulo = document.getElementById("capasTitulo");
+  const texto = document.getElementById("capasTexto");
+  const ejemplo = document.getElementById("capasEjemplo");
+  const capas = document.querySelectorAll(".capas-figura [data-capa]");
+
+  function mostrar(clave) {
+    const datos = info[clave];
+    if (!datos) return;
+    titulo.textContent = datos.titulo;
+    texto.textContent = datos.texto;
+    ejemplo.textContent = datos.ejemplo;
+    ejemplo.hidden = false;
+    capas.forEach((c) => c.classList.toggle("activa", c.dataset.capa === clave));
+  }
+
+  capas.forEach((capa) => {
+    capa.addEventListener("click", (evento) => {
+      evento.stopPropagation(); // evita que el clic llegue a los anillos de abajo
+      mostrar(capa.dataset.capa);
+    });
+    capa.addEventListener("keydown", (evento) => {
+      if (evento.key === "Enter" || evento.key === " ") {
+        evento.preventDefault();
+        mostrar(capa.dataset.capa);
+      }
+    });
+  });
+})();
+
 /* ===== FIN: scripts de la parte 1 ===== */
 
 /* ===== INICIO: scripts de la parte 2 (rama-companero) ===== */
