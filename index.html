@@ -275,10 +275,45 @@
 <!-- ▲ FIN SECCIÓN: reporte -->
 
 <!-- ▼ SECCIÓN: git · responsable: (compañero) -->
-        <section id="git" class="seccion pendiente">
+    <section id="git" class="seccion">
           <h2>La ACS en la práctica: Git y GitHub</h2>
-          <p class="pendiente-nota">Sección en desarrollo en la rama <code>rama-companero</code>.</p>
+          <p>Este sitio no solo explica la ACS: también se construyó aplicándola. Cada concepto de Pressman tiene un equivalente en las herramientas que usamos:</p>
+
+          <div class="tabla-scroll">
+            <table class="tabla-mapa">
+              <thead><tr><th>Concepto ACS (Pressman)</th><th>Equivalente en Git / GitHub</th><th>Cómo lo usamos aquí</th></tr></thead>
+              <tbody>
+                <tr><td>ICS</td><td>Archivos del repositorio</td><td><code>index.html</code>, <code>styles.css</code>, <code>script.js</code>, imágenes</td></tr>
+                <tr><td>Repositorio</td><td>Repositorio Git en GitHub</td><td>Contiene todo el proyecto y su historial</td></tr>
+                <tr><td>Identificación</td><td>Rutas de archivo y <em>hash</em> de cada commit</td><td>Estructura de carpetas definida desde el primer commit</td></tr>
+                <tr><td>Línea base</td><td>Rama <code>main</code> y etiquetas (<em>tags</em>)</td><td>Solo cambia mediante Pull Requests; versión final <code>v1.0</code></td></tr>
+                <tr><td>Petición de cambio</td><td>Issue</td><td>Un Issue por cada sección asignada</td></tr>
+                <tr><td>OCI</td><td>Pull Request</td><td>Describe el cambio y enlaza el Issue (<code>Closes #1</code>)</td></tr>
+                <tr><td>ACC</td><td>Revisor que aprueba el PR</td><td>Cada integrante revisa el PR del otro</td></tr>
+                <tr><td>Check-out / check-in</td><td><code>git checkout -b</code> / <code>git push</code></td><td>Cada integrante trabaja en su rama</td></tr>
+                <tr><td>Control de sincronización</td><td>Ramas y <code>merge</code></td><td>Trabajo en paralelo sin sobrescribirse</td></tr>
+                <tr><td>Conjunto de cambio</td><td>Commit</td><td>Commits pequeños y descriptivos</td></tr>
+                <tr><td>Auditoría</td><td>Revisión del PR</td><td>Comentarios y aprobación antes del merge</td></tr>
+                <tr><td>Reporte de estado</td><td><code>git log</code>, Insights → Network</td><td>Historial visible para el profesor</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Nuestro flujo de trabajo</h3>
+          <figure class="figura-ancha">
+            <img src="assets/images/flujo-ramas.svg" alt="Diagrama de ramas: main se divide en dos ramas, una por integrante, que avanzan en paralelo y se integran con pull requests hasta la versión v1.0" width="800" height="300" loading="lazy">
+            <figcaption>Identificación → Cambio → Versionado → Integración → Auditoría → Reporte, aplicado con dos ramas en paralelo.</figcaption>
+          </figure>
+          <ol class="pasos-flujo">
+            <li><strong>Identificación:</strong> se creó la estructura base del proyecto en <code>main</code>.</li>
+            <li><strong>Cambio:</strong> se abrió un Issue por cada parte del trabajo.</li>
+            <li><strong>Versionado:</strong> cada integrante trabajó en su rama (<code>rama-johansell</code> y <code>rama-albert</code>) con commits descriptivos.</li>
+            <li><strong>Integración:</strong> cada rama se unió a <code>main</code> mediante un Pull Request.</li>
+            <li><strong>Auditoría:</strong> el otro integrante revisó y aprobó cada Pull Request.</li>
+            <li><strong>Reporte:</strong> se marcó la versión <code>v1.0</code> y el historial queda como registro.</li>
+          </ol>
         </section>
+
 <!-- ▲ FIN SECCIÓN: git -->
 
 <!-- ▼ SECCIÓN: conclusion · responsable: (compañero) -->

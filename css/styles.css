@@ -229,6 +229,13 @@ tbody tr:nth-child(even) { background: #f7f7f7; }
 .preguntas-rec span { font-family: var(--fuente-titulos); font-size: 1.8rem; opacity: .75; }
 .consejo { background: #eefaff; border-left: 5px solid var(--azul); border-radius: 0 10px 10px 0; padding: 1rem 1.25rem; }
 .consejo p { margin: 0; }
+
+/* --- ACS en Git --- */
+.tabla-mapa td:first-child { font-weight: 700; color: var(--naranja); }
+.figura-ancha { margin: 1rem 0; }
+.figura-ancha img { width: 100%; border-radius: var(--radio); border: 1px solid var(--borde); }
+.pasos-flujo li { margin-bottom: .4rem; }
+
 /* ===== FIN: estilos de la parte 2 ===== */
 
 /* ---------- Diseño adaptable (responsive) ---------- */
