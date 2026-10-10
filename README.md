@@ -4,4 +4,4 @@ Resumen de la sección 22.3 "El proceso ACS" del libro Ingeniería del Software 
 
 ## Integrantes
 - Johansell Alfonso Pérez Feliz
-- (compañero)
+- Albert Frank
