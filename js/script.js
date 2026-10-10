@@ -150,6 +150,24 @@
   pintar();
 })();
 
+/* ---------- Lista de verificación de auditoría ---------- */
+(function checklistAuditoria() {
+  const lista = document.getElementById("checklistAuditoria");
+  if (!lista) return;
+  const casillas = [...lista.querySelectorAll("input[type=checkbox]")];
+  const barra = document.getElementById("checklistProgreso");
+  const resultado = document.getElementById("checklistResultado");
 
+  function actualizar() {
+    const marcadas = casillas.filter((c) => c.checked).length;
+    casillas.forEach((c) => c.parentElement.classList.toggle("marcada", c.checked));
+    barra.style.width = (marcadas / casillas.length) * 100 + "%";
+    resultado.textContent = marcadas === casillas.length
+      ? "¡Auditoría completa! El cambio puede integrarse a la nueva versión."
+      : `${marcadas} de ${casillas.length} verificaciones completadas.`;
+  }
+  casillas.forEach((c) => c.addEventListener("change", actualizar));
+  actualizar();
+})();
 /* pendiente */
 /* ===== FIN: scripts de la parte 2 ===== */

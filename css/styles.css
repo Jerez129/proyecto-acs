@@ -213,7 +213,22 @@ tbody tr:nth-child(even) { background: #f7f7f7; }
 .flujo-pasos li.decision { font-weight: 700; }
 .flujo-negado { background: #fff3cd; border-radius: var(--radio-sm); padding: .8rem 1rem; margin: 1rem 0 0; }
 
+/* --- Lista de verificación de auditoría --- */
+.checklist { display: grid; gap: .5rem; margin: 1rem 0 1.5rem; }
+.checklist label { display: flex; gap: .75rem; align-items: flex-start; background: var(--fondo); border-radius: var(--radio-sm); padding: .75rem 1rem; cursor: pointer; transition: background .2s; }
+.checklist label:hover { background: var(--naranja-suave); }
+.checklist input { accent-color: var(--naranja); width: 1.15rem; height: 1.15rem; margin-top: .3rem; flex: none; }
+.checklist label.marcada { background: #e6f8fd; text-decoration: line-through; text-decoration-color: var(--azul-oscuro); }
+.checklist-barra { height: 8px; background: var(--borde); border-radius: 999em; overflow: hidden; margin-top: .5rem; }
+.checklist-barra span { display: block; height: 100%; width: 0; background: var(--azul); transition: width .3s; }
+.checklist-resultado { font-weight: 600; font-size: .9rem; margin: 0; }
 
+/* --- Preguntas del REC --- */
+.preguntas-rec { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: .75rem; margin: 1rem 0 1.5rem; }
+.preguntas-rec div { background: var(--naranja); color: var(--blanco); border-radius: var(--radio); padding: 1rem; font-weight: 600; display: flex; gap: .6rem; align-items: center; }
+.preguntas-rec span { font-family: var(--fuente-titulos); font-size: 1.8rem; opacity: .75; }
+.consejo { background: #eefaff; border-left: 5px solid var(--azul); border-radius: 0 10px 10px 0; padding: 1rem 1.25rem; }
+.consejo p { margin: 0; }
 /* ===== FIN: estilos de la parte 2 ===== */
 
 /* ---------- Diseño adaptable (responsive) ---------- */

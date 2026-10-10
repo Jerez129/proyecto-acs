@@ -194,17 +194,84 @@
 <!-- ▲ FIN SECCIÓN: cambio -->
 
 <!-- ▼ SECCIÓN: auditoria · responsable: (compañero) -->
-        <section id="auditoria" class="seccion pendiente">
+  <section id="auditoria" class="seccion">
           <h2>Auditoría de la configuración</h2>
-          <p class="pendiente-nota">Sección en desarrollo en la rama <code>rama-companero</code>.</p>
+          <p class="subtitulo-seccion">Sección 22.3.4</p>
+          <p>La identificación, el control de versión y el control de cambio ponen orden, pero solo siguen un cambio hasta que se genera la OCI. Entonces, <strong>¿cómo se sabe si el cambio se hizo bien?</strong> Pressman da dos respuestas que se complementan:</p>
+
+          <div class="tabla-scroll">
+            <table>
+              <thead><tr><th></th><th>Revisión técnica</th><th>Auditoría de configuración</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Se enfoca en</strong></td><td>La exactitud técnica del objeto modificado.</td><td>Aspectos que la revisión no suele mirar: proceso, registros y documentación.</td></tr>
+                <tr><td><strong>Busca</strong></td><td>Consistencia con otros ICS, omisiones y efectos secundarios.</td><td>Que se cumpla lo que pide la OCI y se sigan los procedimientos ACS.</td></tr>
+                <tr><td><strong>¿Cuándo?</strong></td><td>En todos los cambios, salvo los más triviales.</td><td>Al cerrar un cambio o antes de construir una versión.</td></tr>
+                <tr><td><strong>¿Quién?</strong></td><td>Los revisores técnicos del equipo.</td><td>En una ACS formal, el grupo de aseguramiento de calidad.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Las seis preguntas de la auditoría</h3>
+          <p>Úsalas como lista de verificación. Marca cada pregunta pensando en un cambio real, por ejemplo un Pull Request de este proyecto:</p>
+          <div class="checklist" id="checklistAuditoria">
+            <label><input type="checkbox"> ¿Se hizo el cambio que pedía la OCI? ¿Se agregó algo extra que no estaba pedido?</label>
+            <label><input type="checkbox"> ¿Se hizo una revisión técnica para comprobar que el cambio es correcto?</label>
+            <label><input type="checkbox"> ¿Se siguió el proceso de software y se aplicaron los estándares de ingeniería?</label>
+            <label><input type="checkbox"> ¿El cambio quedó marcado en el ICS, con fecha y autor? ¿Los atributos del objeto lo reflejan?</label>
+            <label><input type="checkbox"> ¿Se siguieron los procedimientos ACS para anotar, registrar y reportar el cambio?</label>
+            <label><input type="checkbox"> ¿Se actualizaron correctamente los ICS relacionados?</label>
+            <div class="checklist-barra"><span id="checklistProgreso"></span></div>
+            <p class="checklist-resultado" id="checklistResultado">0 de 6 verificaciones completadas.</p>
+          </div>
+
+          <p class="nota">Una auditoría formal también garantiza que en cada construcción entren las versiones correctas de los ICS y que toda la documentación esté actualizada y sea consistente con esa versión.</p>
         </section>
+
 <!-- ▲ FIN SECCIÓN: auditoria -->
 
 <!-- ▼ SECCIÓN: reporte · responsable: (compañero) -->
-        <section id="reporte" class="seccion pendiente">
+<section id="reporte" class="seccion">
           <h2>Reporte de estado de la configuración (REC)</h2>
-          <p class="pendiente-nota">Sección en desarrollo en la rama <code>rama-companero</code>.</p>
+          <p class="subtitulo-seccion">Sección 22.3.5</p>
+          <p>El reporte de estado, también llamado <strong>contabilidad de estado</strong>, mantiene informado a todo el equipo. Su trabajo es responder cuatro preguntas:</p>
+
+          <div class="preguntas-rec">
+            <div><span>1</span>¿Qué ocurrió?</div>
+            <div><span>2</span>¿Quién lo hizo?</div>
+            <div><span>3</span>¿Cuándo ocurrió?</div>
+            <div><span>4</span>¿Qué más se verá afectado?</div>
+          </div>
+
+          <h3>¿Cuándo se hace una entrada en el REC?</h3>
+          <ul class="lista-check">
+            <li>Cada vez que un ICS recibe una nueva identificación o se actualiza.</li>
+            <li>Cada vez que la ACC aprueba un cambio, es decir, cuando emite una OCI.</li>
+            <li>Cada vez que se realiza una auditoría de configuración (se reportan sus resultados).</li>
+          </ul>
+          <p>Estos reportes se pueden publicar en una base de datos en línea o en un sitio web, para que desarrolladores y personal de apoyo busquen los cambios por palabras clave. Además, se genera un reporte periódico para mantener informados a gerentes y profesionales.</p>
+
+          <div class="ejemplo">
+            <p class="ejemplo-titulo">Ejemplo: el historial de Git como REC</p>
+            <pre class="codigo"><code><span class="c-comando">$ git log --oneline --graph --all</span>
+*   9f3e1a2 Merge pull request #2 from rama-albert
+|\
+| * 5c7d8b1 feat: agrega quiz y conclusión
+| * 4b6a9c0 feat: agrega reporte de estado
+* |   7a2f4e3 Merge pull request #1 from rama-johansell
+|\ \
+| * | 2d1c0b9 feat: agrega control de versión
+| * | 1e0f3a8 feat: agrega identificación de objetos
+|/ /
+* / 0a9b8c7 chore: estructura inicial del proyecto
+|/</code></pre>
+            <p>Cada línea responde qué pasó (mensaje del commit) y, con <code>git log</code> completo, también quién y cuándo. Las líneas paralelas muestran el <strong>trabajo no lineal</strong>: dos ramas avanzando al mismo tiempo.</p>
+          </div>
+
+          <div class="consejo">
+            <p><strong>Consejo de Pressman:</strong> haz una lista de "personas que necesitan saber" para cada objeto de configuración. Cuando ocurra un cambio, avisa a todos los de la lista. En GitHub esto equivale a mencionar con <code>@usuario</code> o a usar <em>watchers</em> y notificaciones.</p>
+          </div>
         </section>
+
 <!-- ▲ FIN SECCIÓN: reporte -->
 
 <!-- ▼ SECCIÓN: git · responsable: (compañero) -->
