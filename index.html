@@ -59,17 +59,73 @@
         </header>
 
 <!-- ▼ SECCIÓN: intro · responsable: Johansell Alfonso Pérez Feliz -->
-        <section id="intro" class="seccion pendiente">
+       <section id="intro" class="seccion">
           <h2>Introducción</h2>
-          <p class="pendiente-nota">Sección en desarrollo en la rama <code>rama-johansell</code>.</p>
+          <p>En cualquier proyecto de software el cambio es constante: el cliente pide algo nuevo, se descubre un error, el equipo mejora el diseño o cambia una tecnología. El problema no es que haya cambios, sino que ocurran <strong>sin control</strong>. Cuando nadie sabe qué versión es la correcta, quién modificó un archivo o por qué dejó de funcionar algo que antes funcionaba, el proyecto se vuelve caótico.</p>
+          <p>La <strong>Administración de la Configuración del Software (ACS)</strong>, conocida en inglés como <em>Software Configuration Management (SCM)</em>, es el conjunto de actividades que sirven para gestionar ese cambio durante toda la vida del software. No busca impedir que el software cambie, sino que cada cambio sea <strong>identificado, evaluado, registrado y comunicado</strong>.</p>
+
+          <div class="definicion">
+            <p class="definicion-titulo">Definición</p>
+            <p>La ACS es una actividad de protección que se aplica a lo largo de todo el proceso de software para identificar los elementos que pueden cambiar, controlar esos cambios, asegurar que se implementen correctamente e informar a todas las personas interesadas.</p>
+          </div>
+
+          <h3>Conceptos clave antes de empezar</h3>
+          <div class="tarjetas-mini">
+            <div class="mini">
+              <p class="mini-sigla">ICS</p>
+              <p><strong>Ítem de Configuración del Software.</strong> Cualquier producto de trabajo que se controla: un documento de requisitos, un diagrama, un archivo de código o un caso de prueba.</p>
+            </div>
+            <div class="mini">
+              <p class="mini-sigla">Línea base</p>
+              <p><strong>Línea de referencia.</strong> Un ICS que ya fue revisado y aprobado. A partir de ese momento solo puede cambiar mediante un procedimiento formal.</p>
+            </div>
+            <div class="mini">
+              <p class="mini-sigla">Repositorio</p>
+              <p><strong>Base de datos del proyecto.</strong> El lugar donde se guardan todos los ICS, sus versiones y las relaciones entre ellos.</p>
+            </div>
+          </div>
+
+          <p class="nota">En este resumen se explica la <strong>sección 22.3: El proceso ACS</strong>, que describe las cinco tareas con las que se administra la configuración: identificación, control de versión, control de cambio, auditoría y reporte de estado.</p>
         </section>
+
 <!-- ▲ FIN SECCIÓN: intro -->
 
 <!-- ▼ SECCIÓN: proceso · responsable: Johansell Alfonso Pérez Feliz -->
-        <section id="proceso" class="seccion pendiente">
+         <section id="proceso" class="seccion">
           <h2>El proceso ACS</h2>
-          <p class="pendiente-nota">Sección en desarrollo en la rama <code>rama-johansell</code>.</p>
+          <p>Pressman explica que el proceso ACS es una serie de tareas organizadas que persiguen <strong>cuatro objetivos</strong>. Lo importante es que este proceso no tiene que ser burocrático ni pesado: debe ser lo suficientemente claro como para que el equipo sepa cómo actuar ante cualquier cambio.</p>
+
+          <ol class="objetivos">
+            <li><span class="num">1</span><div><strong>Identificar</strong> todos los ítems que, en conjunto, forman la configuración del software.</div></li>
+            <li><span class="num">2</span><div><strong>Gestionar los cambios</strong> que se hagan a uno o varios de esos ítems.</div></li>
+            <li><span class="num">3</span><div><strong>Facilitar la construcción</strong> de diferentes versiones de una aplicación.</div></li>
+            <li><span class="num">4</span><div><strong>Garantizar la calidad</strong> del software mientras la configuración evoluciona con el tiempo.</div></li>
+          </ol>
+
+          <h3>Las preguntas que el proceso debe responder</h3>
+          <p>Para cumplir esos objetivos, un equipo necesita respuestas claras a estas preguntas. Cada una se relaciona con una tarea de ACS:</p>
+          <div class="tabla-scroll">
+            <table>
+              <thead>
+                <tr><th>Pregunta</th><th>Tarea ACS que la responde</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>¿Cómo se identifican los elementos individuales de la configuración?</td><td>Identificación</td></tr>
+                <tr><td>¿Cómo se manejan las muchas versiones de un programa y su documentación?</td><td>Control de versión</td></tr>
+                <tr><td>¿Cómo se controlan los cambios antes y después de entregar el software al cliente?</td><td>Control de cambio</td></tr>
+                <tr><td>¿Quién aprueba y prioriza los cambios solicitados?</td><td>Control de cambio (ACC)</td></tr>
+                <tr><td>¿Cómo se garantiza que los cambios se hicieron bien?</td><td>Auditoría de la configuración</td></tr>
+                <tr><td>¿Cómo se informa a los demás sobre los cambios realizados?</td><td>Reporte de estado</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <blockquote class="cita">
+            <p>Cualquier cambio, incluso uno para mejorar, trae consigo incomodidades.</p>
+            <footer>Idea de Arnold Bennett, citada por Pressman</footer>
+          </blockquote>
         </section>
+
 <!-- ▲ FIN SECCIÓN: proceso -->
 
 <!-- ▼ SECCIÓN: capas · responsable: Johansell Alfonso Pérez Feliz -->

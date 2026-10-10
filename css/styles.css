@@ -195,7 +195,17 @@ tbody tr:nth-child(even) { background: #f7f7f7; }
 }
 
 /* ===== INICIO: estilos de la parte 1 (rama-johansell) ===== */
-/* pendiente */
+/* --- Objetivos numerados --- */
+.objetivos { list-style: none; padding: 0; display: grid; gap: .75rem; margin: 1rem 0 1.5rem; }
+.objetivos li { display: flex; gap: 1rem; align-items: flex-start; background: var(--fondo); border-radius: var(--radio-sm); padding: .9rem 1rem; }
+.objetivos .num { flex: none; width: 2.2rem; height: 2.2rem; border-radius: 999em; background: var(--naranja); color: var(--blanco); font-family: var(--fuente-titulos); font-size: 1.2rem; display: grid; place-items: center; }
+
+/* --- Cita destacada --- */
+.cita { margin: 1.5rem 0 0; padding: 1.25rem 1.5rem; border-left: 5px solid var(--azul); background: #eefaff; border-radius: 0 10px 10px 0; }
+.cita p { font-family: var(--fuente-titulos); font-size: 1.25rem; font-style: italic; margin-bottom: .4rem; }
+.cita footer { font-size: .82rem; color: var(--texto-suave); }
+
+
 /* ===== FIN: estilos de la parte 1 ===== */
 
 /* ===== INICIO: estilos de la parte 2 (rama-companero) ===== */
