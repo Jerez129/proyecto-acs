@@ -98,5 +98,58 @@
 /* ===== FIN: scripts de la parte 1 ===== */
 
 /* ===== INICIO: scripts de la parte 2 (rama-companero) ===== */
+/* ---------- Flujo del control de cambio (figura 22.5) ---------- */
+(function flujoCambio() {
+  const contenedor = document.getElementById("flujoCambio");
+  if (!contenedor) return;
+
+  const pasos = [...contenedor.querySelectorAll("#flujoPasos li")];
+  const anterior = document.getElementById("flujoAnterior");
+  const siguiente = document.getElementById("flujoSiguiente");
+  const contador = document.getElementById("flujoContador");
+  const decision = document.getElementById("flujoDecision");
+  const negado = document.getElementById("flujoNegado");
+  const indiceDecision = pasos.findIndex((p) => p.classList.contains("decision"));
+  let actual = 0;
+  let rechazado = false;
+
+  contenedor.classList.add("js"); // activa los estilos del modo paso a paso
+
+  function pintar() {
+    pasos.forEach((p, i) => {
+      p.classList.toggle("actual", i === actual);
+      p.classList.toggle("hecho", i < actual);
+    });
+    contador.textContent = `Paso ${actual + 1} de ${pasos.length}`;
+    const enDecision = actual === indiceDecision && !rechazado;
+    decision.hidden = !enDecision;
+    negado.hidden = !rechazado;
+    anterior.disabled = actual === 0;
+    siguiente.disabled = enDecision || rechazado || actual === pasos.length - 1;
+  }
+
+  anterior.addEventListener("click", () => {
+    rechazado = false;
+    if (actual > 0) actual--;
+    pintar();
+  });
+  siguiente.addEventListener("click", () => {
+    if (actual < pasos.length - 1) actual++;
+    pintar();
+  });
+  decision.querySelectorAll("[data-decision]").forEach((boton) =>
+    boton.addEventListener("click", () => {
+      if (boton.dataset.decision === "aprobar") {
+        actual++;
+      } else {
+        rechazado = true;
+      }
+      pintar();
+    })
+  );
+  pintar();
+})();
+
+
 /* pendiente */
 /* ===== FIN: scripts de la parte 2 ===== */

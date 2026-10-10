@@ -94,10 +94,103 @@
 <!-- ▲ FIN SECCIÓN: version -->
 
 <!-- ▼ SECCIÓN: cambio · responsable: (compañero) -->
-        <section id="cambio" class="seccion pendiente">
+  <section id="cambio" class="seccion">
           <h2>Control de cambio</h2>
-          <p class="pendiente-nota">Sección en desarrollo en la rama <code>rama-companero</code>.</p>
+          <p class="subtitulo-seccion">Sección 22.3.3</p>
+          <p>James Bach, citado por Pressman, resume el dilema así: un cambio pequeño en el código puede provocar una gran falla, pero también puede corregir un error grave o traer una gran mejora. El control de cambio es un <strong>acto de equilibrio</strong>: si hay demasiado control se frena la creatividad y aparece la burocracia; si hay muy poco, el proyecto termina en caos.</p>
+
+          <h3>Los actores del proceso</h3>
+          <div class="tarjetas-mini">
+            <div class="mini">
+              <p class="mini-sigla">Petición</p>
+              <p><strong>Solicitud de cambio.</strong> Alguien (usuario, cliente o desarrollador) pide un cambio. Se evalúa su mérito técnico, sus efectos secundarios, su impacto y su costo.</p>
+            </div>
+            <div class="mini">
+              <p class="mini-sigla">ACC</p>
+              <p><strong>Autoridad de Control de Cambio.</strong> Persona o grupo que decide si el cambio se aprueba y con qué prioridad. Debe tener una visión global del producto.</p>
+            </div>
+            <div class="mini">
+              <p class="mini-sigla">OCI</p>
+              <p><strong>Orden de Cambio de Ingeniería.</strong> Se genera por cada cambio aprobado. Describe qué se hará, qué restricciones hay y cómo se revisará.</p>
+            </div>
+          </div>
+
+          <h3>El flujo del control de cambio</h3>
+          <p>La figura 22.5 de Pressman muestra el camino completo de una petición de cambio. Recórrelo paso a paso:</p>
+
+          <div class="flujo" id="flujoCambio">
+            <div class="flujo-controles">
+              <button type="button" class="btn" id="flujoAnterior">← Anterior</button>
+              <span class="flujo-contador" id="flujoContador">Paso 1 de 16</span>
+              <button type="button" class="btn btn-primario" id="flujoSiguiente">Siguiente →</button>
+            </div>
+            <div class="flujo-decision" id="flujoDecision" hidden>
+              <p><strong>La ACC debe decidir:</strong></p>
+              <button type="button" class="btn btn-primario" data-decision="aprobar">Aprobar el cambio</button>
+              <button type="button" class="btn" data-decision="negar">Negar el cambio</button>
+            </div>
+            <ol class="flujo-pasos" id="flujoPasos">
+              <li>Se reconoce la necesidad del cambio.</li>
+              <li>El usuario envía una petición de cambio.</li>
+              <li>El desarrollador evalúa la petición.</li>
+              <li>Se genera un reporte de cambio.</li>
+              <li class="decision">La Autoridad de Control de Cambio (ACC) decide.</li>
+              <li>La petición se pone en fila y se genera la OCI.</li>
+              <li>Se asignan personas a los objetos de configuración.</li>
+              <li>Se da "salida" a los ítems de configuración (check-out).</li>
+              <li>Se hace el cambio.</li>
+              <li>Se revisa (audita) el cambio.</li>
+              <li>Se da "entrada" a los ítems que cambiaron (check-in).</li>
+              <li>Se establece una línea base para las pruebas.</li>
+              <li>Se aplican actividades de aseguramiento de calidad y pruebas.</li>
+              <li>Se "promueven" los cambios para la siguiente versión.</li>
+              <li>Se reconstruye la versión y se audita el cambio en todos los ítems.</li>
+              <li>Se incluyen los cambios y se distribuye la nueva versión.</li>
+            </ol>
+            <p class="flujo-negado" id="flujoNegado" hidden><strong>Petición negada:</strong> se informa al usuario y el proceso termina aquí. La decisión queda registrada.</p>
+          </div>
+
+          <h3>Control de acceso y control de sincronización</h3>
+          <div class="comparacion">
+            <div class="tarjeta">
+              <p class="tarjeta-etiqueta">¿Quién puede?</p>
+              <h3>Control de acceso</h3>
+              <p>Define qué ingenieros tienen autoridad para acceder a un objeto de configuración y modificarlo.</p>
+              <p class="ejemplo-linea"><strong>En GitHub:</strong> colaboradores del repositorio y ramas protegidas.</p>
+            </div>
+            <div class="tarjeta">
+              <p class="tarjeta-etiqueta">¿Cómo no chocar?</p>
+              <h3>Control de sincronización</h3>
+              <p>Asegura que dos personas que cambian lo mismo al mismo tiempo no se sobrescriban entre sí.</p>
+              <p class="ejemplo-linea"><strong>En Git:</strong> ramas separadas y <code>merge</code>, que avisa si hay conflictos.</p>
+            </div>
+          </div>
+
+          <h3>Tres niveles de control</h3>
+          <p>Para no caer en la burocracia, el nivel de control aumenta según la madurez del ICS:</p>
+          <div class="tabla-scroll">
+            <table>
+              <thead><tr><th>Momento</th><th>Tipo de control</th><th>¿Quién aprueba?</th></tr></thead>
+              <tbody>
+                <tr><td>Antes de que el ICS sea línea base</td><td><strong>Informal:</strong> el autor cambia lo que necesite, siempre que no afecte a otros.</td><td>El propio desarrollador</td></tr>
+                <tr><td>Después de ser línea base</td><td><strong>A nivel de proyecto:</strong> cada cambio se evalúa y se registra.</td><td>El gerente del proyecto (cambio local) o la ACC (si afecta a otros ICS)</td></tr>
+                <tr><td>Después de entregarse al cliente</td><td><strong>Formal:</strong> se sigue el flujo completo de la figura 22.5.</td><td>La ACC</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="ejemplo">
+            <p class="ejemplo-titulo">Ejemplo del libro: el proyecto CasaSegura</p>
+            <p>En el caso de estudio, el equipo de CasaSegura recuerda un proyecto anterior que fracasó por cambios sin control. Su gerente, Doug, propone tres acciones:</p>
+            <ol>
+              <li>Definir un <strong>proceso de control de cambio</strong>: cómo se pide, cómo se evalúa y cómo se registra un cambio.</li>
+              <li>Conseguir una buena <strong>herramienta ACS</strong> para el control de cambios y de versiones.</li>
+              <li>Lograr el <strong>compromiso de todo el equipo</strong> de seguir el proceso.</li>
+            </ol>
+            <p>La lección es que la herramienta sola no basta: sin disciplina del equipo, la ACS no funciona.</p>
+          </div>
         </section>
+>
 <!-- ▲ FIN SECCIÓN: cambio -->
 
 <!-- ▼ SECCIÓN: auditoria · responsable: (compañero) -->
