@@ -235,8 +235,70 @@ tbody tr:nth-child(even) { background: #f7f7f7; }
 
 /* ===== FIN: estilos de la parte 1 ===== */
 
-/* ===== INICIO: estilos de la parte 2 (rama-companero) ===== */
-/* pendiente */
+/* ===== INICIO: estilos de la parte 2 (rama-albert) ===== */
+/* --- Flujo del control de cambio --- */
+.flujo { background: var(--fondo); border-radius: var(--radio); padding: 1.25rem; margin: 1rem 0 1.5rem; }
+.flujo-controles { display: flex; align-items: center; justify-content: space-between; gap: .75rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.flujo-contador { font-weight: 700; font-size: .9rem; }
+.flujo-decision { background: var(--blanco); border: 2px solid var(--naranja); border-radius: var(--radio-sm); padding: 1rem; margin-bottom: 1rem; display: flex; gap: .6rem; flex-wrap: wrap; align-items: center; }
+.flujo-decision p { margin: 0 .5rem 0 0; }
+.flujo-pasos { margin: 0; padding-left: 1.6rem; counter-reset: paso; }
+.flujo-pasos li { padding: .35rem .6rem; border-radius: 6px; margin-bottom: .2rem; transition: background .2s, opacity .2s; }
+.flujo.js .flujo-pasos li { opacity: .38; }
+.flujo.js .flujo-pasos li.hecho { opacity: .75; }
+.flujo.js .flujo-pasos li.actual { opacity: 1; background: var(--naranja); color: var(--blanco); font-weight: 600; }
+.flujo-pasos li.decision { font-weight: 700; }
+.flujo-negado { background: #fff3cd; border-radius: var(--radio-sm); padding: .8rem 1rem; margin: 1rem 0 0; }
+
+/* --- Lista de verificación de auditoría --- */
+.checklist { display: grid; gap: .5rem; margin: 1rem 0 1.5rem; }
+.checklist label { display: flex; gap: .75rem; align-items: flex-start; background: var(--fondo); border-radius: var(--radio-sm); padding: .75rem 1rem; cursor: pointer; transition: background .2s; }
+.checklist label:hover { background: var(--naranja-suave); }
+.checklist input { accent-color: var(--naranja); width: 1.15rem; height: 1.15rem; margin-top: .3rem; flex: none; }
+.checklist label.marcada { background: #e6f8fd; text-decoration: line-through; text-decoration-color: var(--azul-oscuro); }
+.checklist-barra { height: 8px; background: var(--borde); border-radius: 999em; overflow: hidden; margin-top: .5rem; }
+.checklist-barra span { display: block; height: 100%; width: 0; background: var(--azul); transition: width .3s; }
+.checklist-resultado { font-weight: 600; font-size: .9rem; margin: 0; }
+
+/* --- Preguntas del REC --- */
+.preguntas-rec { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: .75rem; margin: 1rem 0 1.5rem; }
+.preguntas-rec div { background: var(--naranja); color: var(--blanco); border-radius: var(--radio); padding: 1rem; font-weight: 600; display: flex; gap: .6rem; align-items: center; }
+.preguntas-rec span { font-family: var(--fuente-titulos); font-size: 1.8rem; opacity: .75; }
+.consejo { background: #eefaff; border-left: 5px solid var(--azul); border-radius: 0 10px 10px 0; padding: 1rem 1.25rem; }
+.consejo p { margin: 0; }
+
+/* --- ACS en Git --- */
+.tabla-mapa td:first-child { font-weight: 700; color: var(--naranja); }
+.figura-ancha { margin: 1rem 0; }
+.figura-ancha img { width: 100%; border-radius: var(--radio); border: 1px solid var(--borde); }
+.pasos-flujo li { margin-bottom: .4rem; }
+
+/* --- Conclusión --- */
+.resumen-final { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: .5rem; margin-top: 1.5rem; }
+.resumen-final div { background: var(--fondo); border-bottom: 4px solid var(--naranja); border-radius: var(--radio-sm); padding: .8rem; text-align: center; }
+.resumen-final strong { display: block; font-size: .85rem; }
+.resumen-final span { font-family: var(--fuente-titulos); font-style: italic; color: var(--texto-suave); }
+
+/* --- Quiz --- */
+.quiz-pregunta { background: var(--fondo); border-radius: var(--radio); padding: 1.25rem; }
+.quiz-progreso { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--naranja); margin-bottom: .3rem; }
+.quiz-enunciado { font-family: var(--fuente-titulos); font-size: 1.25rem; margin-bottom: 1rem; }
+.quiz-opciones { display: grid; gap: .5rem; }
+.quiz-opcion { text-align: left; font-family: var(--fuente-texto); font-size: .95rem; padding: .75rem 1rem; border-radius: var(--radio-sm); border: 2px solid var(--borde); background: var(--blanco); cursor: pointer; transition: border-color .15s; }
+.quiz-opcion:hover:not(:disabled) { border-color: var(--naranja); }
+.quiz-opcion.correcta { border-color: #2e9d5b; background: #e8f7ee; }
+.quiz-opcion.incorrecta { border-color: #d0342c; background: #fdecea; }
+.quiz-opcion:disabled { cursor: default; }
+.quiz-explicacion { margin: 1rem 0 0; font-size: .92rem; background: var(--blanco); border-radius: var(--radio-sm); padding: .8rem 1rem; }
+.quiz-acciones { margin-top: 1rem; display: flex; justify-content: flex-end; }
+.quiz-final { text-align: center; padding: 1.5rem; }
+.quiz-puntaje { font-family: var(--fuente-titulos); font-size: 3rem; color: var(--naranja); margin: 0; }
+
+/* --- Referencias y cita --- */
+.referencias { padding-left: 1.2rem; }
+.referencias li { margin-bottom: .7rem; padding-left: .3rem; }
+.citar { background: var(--fondo); border-radius: var(--radio); padding: 1.25rem; margin-top: 1.5rem; }
+.citar p { font-size: .92rem; }
 /* ===== FIN: estilos de la parte 2 ===== */
 
 /* ---------- Diseño adaptable (responsive) ---------- */

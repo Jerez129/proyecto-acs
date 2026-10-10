@@ -279,53 +279,274 @@ Date:   Sat Oct 10 2026
 
 <!-- ▲ FIN SECCIÓN: version -->
 
-<!-- ▼ SECCIÓN: cambio · responsable: (compañero) -->
-        <section id="cambio" class="seccion pendiente">
+<!-- ▼ SECCIÓN: cambio · responsable: (albert) -->
+  <section id="cambio" class="seccion">
           <h2>Control de cambio</h2>
-          <p class="pendiente-nota">Sección en desarrollo en la rama <code>rama-companero</code>.</p>
+          <p class="subtitulo-seccion">Sección 22.3.3</p>
+          <p>James Bach, citado por Pressman, resume el dilema así: un cambio pequeño en el código puede provocar una gran falla, pero también puede corregir un error grave o traer una gran mejora. El control de cambio es un <strong>acto de equilibrio</strong>: si hay demasiado control se frena la creatividad y aparece la burocracia; si hay muy poco, el proyecto termina en caos.</p>
+
+          <h3>Los actores del proceso</h3>
+          <div class="tarjetas-mini">
+            <div class="mini">
+              <p class="mini-sigla">Petición</p>
+              <p><strong>Solicitud de cambio.</strong> Alguien (usuario, cliente o desarrollador) pide un cambio. Se evalúa su mérito técnico, sus efectos secundarios, su impacto y su costo.</p>
+            </div>
+            <div class="mini">
+              <p class="mini-sigla">ACC</p>
+              <p><strong>Autoridad de Control de Cambio.</strong> Persona o grupo que decide si el cambio se aprueba y con qué prioridad. Debe tener una visión global del producto.</p>
+            </div>
+            <div class="mini">
+              <p class="mini-sigla">OCI</p>
+              <p><strong>Orden de Cambio de Ingeniería.</strong> Se genera por cada cambio aprobado. Describe qué se hará, qué restricciones hay y cómo se revisará.</p>
+            </div>
+          </div>
+
+          <h3>El flujo del control de cambio</h3>
+          <p>La figura 22.5 de Pressman muestra el camino completo de una petición de cambio. Recórrelo paso a paso:</p>
+
+          <div class="flujo" id="flujoCambio">
+            <div class="flujo-controles">
+              <button type="button" class="btn" id="flujoAnterior">← Anterior</button>
+              <span class="flujo-contador" id="flujoContador">Paso 1 de 16</span>
+              <button type="button" class="btn btn-primario" id="flujoSiguiente">Siguiente →</button>
+            </div>
+            <div class="flujo-decision" id="flujoDecision" hidden>
+              <p><strong>La ACC debe decidir:</strong></p>
+              <button type="button" class="btn btn-primario" data-decision="aprobar">Aprobar el cambio</button>
+              <button type="button" class="btn" data-decision="negar">Negar el cambio</button>
+            </div>
+            <ol class="flujo-pasos" id="flujoPasos">
+              <li>Se reconoce la necesidad del cambio.</li>
+              <li>El usuario envía una petición de cambio.</li>
+              <li>El desarrollador evalúa la petición.</li>
+              <li>Se genera un reporte de cambio.</li>
+              <li class="decision">La Autoridad de Control de Cambio (ACC) decide.</li>
+              <li>La petición se pone en fila y se genera la OCI.</li>
+              <li>Se asignan personas a los objetos de configuración.</li>
+              <li>Se da "salida" a los ítems de configuración (check-out).</li>
+              <li>Se hace el cambio.</li>
+              <li>Se revisa (audita) el cambio.</li>
+              <li>Se da "entrada" a los ítems que cambiaron (check-in).</li>
+              <li>Se establece una línea base para las pruebas.</li>
+              <li>Se aplican actividades de aseguramiento de calidad y pruebas.</li>
+              <li>Se "promueven" los cambios para la siguiente versión.</li>
+              <li>Se reconstruye la versión y se audita el cambio en todos los ítems.</li>
+              <li>Se incluyen los cambios y se distribuye la nueva versión.</li>
+            </ol>
+            <p class="flujo-negado" id="flujoNegado" hidden><strong>Petición negada:</strong> se informa al usuario y el proceso termina aquí. La decisión queda registrada.</p>
+          </div>
+
+          <h3>Control de acceso y control de sincronización</h3>
+          <div class="comparacion">
+            <div class="tarjeta">
+              <p class="tarjeta-etiqueta">¿Quién puede?</p>
+              <h3>Control de acceso</h3>
+              <p>Define qué ingenieros tienen autoridad para acceder a un objeto de configuración y modificarlo.</p>
+              <p class="ejemplo-linea"><strong>En GitHub:</strong> colaboradores del repositorio y ramas protegidas.</p>
+            </div>
+            <div class="tarjeta">
+              <p class="tarjeta-etiqueta">¿Cómo no chocar?</p>
+              <h3>Control de sincronización</h3>
+              <p>Asegura que dos personas que cambian lo mismo al mismo tiempo no se sobrescriban entre sí.</p>
+              <p class="ejemplo-linea"><strong>En Git:</strong> ramas separadas y <code>merge</code>, que avisa si hay conflictos.</p>
+            </div>
+          </div>
+
+          <h3>Tres niveles de control</h3>
+          <p>Para no caer en la burocracia, el nivel de control aumenta según la madurez del ICS:</p>
+          <div class="tabla-scroll">
+            <table>
+              <thead><tr><th>Momento</th><th>Tipo de control</th><th>¿Quién aprueba?</th></tr></thead>
+              <tbody>
+                <tr><td>Antes de que el ICS sea línea base</td><td><strong>Informal:</strong> el autor cambia lo que necesite, siempre que no afecte a otros.</td><td>El propio desarrollador</td></tr>
+                <tr><td>Después de ser línea base</td><td><strong>A nivel de proyecto:</strong> cada cambio se evalúa y se registra.</td><td>El gerente del proyecto (cambio local) o la ACC (si afecta a otros ICS)</td></tr>
+                <tr><td>Después de entregarse al cliente</td><td><strong>Formal:</strong> se sigue el flujo completo de la figura 22.5.</td><td>La ACC</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="ejemplo">
+            <p class="ejemplo-titulo">Ejemplo del libro: el proyecto CasaSegura</p>
+            <p>En el caso de estudio, el equipo de CasaSegura recuerda un proyecto anterior que fracasó por cambios sin control. Su gerente, Doug, propone tres acciones:</p>
+            <ol>
+              <li>Definir un <strong>proceso de control de cambio</strong>: cómo se pide, cómo se evalúa y cómo se registra un cambio.</li>
+              <li>Conseguir una buena <strong>herramienta ACS</strong> para el control de cambios y de versiones.</li>
+              <li>Lograr el <strong>compromiso de todo el equipo</strong> de seguir el proceso.</li>
+            </ol>
+            <p>La lección es que la herramienta sola no basta: sin disciplina del equipo, la ACS no funciona.</p>
+          </div>
         </section>
+>
 <!-- ▲ FIN SECCIÓN: cambio -->
 
-<!-- ▼ SECCIÓN: auditoria · responsable: (compañero) -->
-        <section id="auditoria" class="seccion pendiente">
+<!-- ▼ SECCIÓN: auditoria · responsable: (albert) -->
+  <section id="auditoria" class="seccion">
           <h2>Auditoría de la configuración</h2>
-          <p class="pendiente-nota">Sección en desarrollo en la rama <code>rama-companero</code>.</p>
+          <p class="subtitulo-seccion">Sección 22.3.4</p>
+          <p>La identificación, el control de versión y el control de cambio ponen orden, pero solo siguen un cambio hasta que se genera la OCI. Entonces, <strong>¿cómo se sabe si el cambio se hizo bien?</strong> Pressman da dos respuestas que se complementan:</p>
+
+          <div class="tabla-scroll">
+            <table>
+              <thead><tr><th></th><th>Revisión técnica</th><th>Auditoría de configuración</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Se enfoca en</strong></td><td>La exactitud técnica del objeto modificado.</td><td>Aspectos que la revisión no suele mirar: proceso, registros y documentación.</td></tr>
+                <tr><td><strong>Busca</strong></td><td>Consistencia con otros ICS, omisiones y efectos secundarios.</td><td>Que se cumpla lo que pide la OCI y se sigan los procedimientos ACS.</td></tr>
+                <tr><td><strong>¿Cuándo?</strong></td><td>En todos los cambios, salvo los más triviales.</td><td>Al cerrar un cambio o antes de construir una versión.</td></tr>
+                <tr><td><strong>¿Quién?</strong></td><td>Los revisores técnicos del equipo.</td><td>En una ACS formal, el grupo de aseguramiento de calidad.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Las seis preguntas de la auditoría</h3>
+          <p>Úsalas como lista de verificación. Marca cada pregunta pensando en un cambio real, por ejemplo un Pull Request de este proyecto:</p>
+          <div class="checklist" id="checklistAuditoria">
+            <label><input type="checkbox"> ¿Se hizo el cambio que pedía la OCI? ¿Se agregó algo extra que no estaba pedido?</label>
+            <label><input type="checkbox"> ¿Se hizo una revisión técnica para comprobar que el cambio es correcto?</label>
+            <label><input type="checkbox"> ¿Se siguió el proceso de software y se aplicaron los estándares de ingeniería?</label>
+            <label><input type="checkbox"> ¿El cambio quedó marcado en el ICS, con fecha y autor? ¿Los atributos del objeto lo reflejan?</label>
+            <label><input type="checkbox"> ¿Se siguieron los procedimientos ACS para anotar, registrar y reportar el cambio?</label>
+            <label><input type="checkbox"> ¿Se actualizaron correctamente los ICS relacionados?</label>
+            <div class="checklist-barra"><span id="checklistProgreso"></span></div>
+            <p class="checklist-resultado" id="checklistResultado">0 de 6 verificaciones completadas.</p>
+          </div>
+
+          <p class="nota">Una auditoría formal también garantiza que en cada construcción entren las versiones correctas de los ICS y que toda la documentación esté actualizada y sea consistente con esa versión.</p>
         </section>
+
 <!-- ▲ FIN SECCIÓN: auditoria -->
 
-<!-- ▼ SECCIÓN: reporte · responsable: (compañero) -->
-        <section id="reporte" class="seccion pendiente">
+<!-- ▼ SECCIÓN: reporte · responsable: (albert) -->
+<section id="reporte" class="seccion">
           <h2>Reporte de estado de la configuración (REC)</h2>
-          <p class="pendiente-nota">Sección en desarrollo en la rama <code>rama-companero</code>.</p>
+          <p class="subtitulo-seccion">Sección 22.3.5</p>
+          <p>El reporte de estado, también llamado <strong>contabilidad de estado</strong>, mantiene informado a todo el equipo. Su trabajo es responder cuatro preguntas:</p>
+
+          <div class="preguntas-rec">
+            <div><span>1</span>¿Qué ocurrió?</div>
+            <div><span>2</span>¿Quién lo hizo?</div>
+            <div><span>3</span>¿Cuándo ocurrió?</div>
+            <div><span>4</span>¿Qué más se verá afectado?</div>
+          </div>
+
+          <h3>¿Cuándo se hace una entrada en el REC?</h3>
+          <ul class="lista-check">
+            <li>Cada vez que un ICS recibe una nueva identificación o se actualiza.</li>
+            <li>Cada vez que la ACC aprueba un cambio, es decir, cuando emite una OCI.</li>
+            <li>Cada vez que se realiza una auditoría de configuración (se reportan sus resultados).</li>
+          </ul>
+          <p>Estos reportes se pueden publicar en una base de datos en línea o en un sitio web, para que desarrolladores y personal de apoyo busquen los cambios por palabras clave. Además, se genera un reporte periódico para mantener informados a gerentes y profesionales.</p>
+
+          <div class="ejemplo">
+            <p class="ejemplo-titulo">Ejemplo: el historial de Git como REC</p>
+            <pre class="codigo"><code><span class="c-comando">$ git log --oneline --graph --all</span>
+*   9f3e1a2 Merge pull request #2 from rama-albert
+|\
+| * 5c7d8b1 feat: agrega quiz y conclusión
+| * 4b6a9c0 feat: agrega reporte de estado
+* |   7a2f4e3 Merge pull request #1 from rama-johansell
+|\ \
+| * | 2d1c0b9 feat: agrega control de versión
+| * | 1e0f3a8 feat: agrega identificación de objetos
+|/ /
+* / 0a9b8c7 chore: estructura inicial del proyecto
+|/</code></pre>
+            <p>Cada línea responde qué pasó (mensaje del commit) y, con <code>git log</code> completo, también quién y cuándo. Las líneas paralelas muestran el <strong>trabajo no lineal</strong>: dos ramas avanzando al mismo tiempo.</p>
+          </div>
+
+          <div class="consejo">
+            <p><strong>Consejo de Pressman:</strong> haz una lista de "personas que necesitan saber" para cada objeto de configuración. Cuando ocurra un cambio, avisa a todos los de la lista. En GitHub esto equivale a mencionar con <code>@usuario</code> o a usar <em>watchers</em> y notificaciones.</p>
+          </div>
         </section>
+
 <!-- ▲ FIN SECCIÓN: reporte -->
 
-<!-- ▼ SECCIÓN: git · responsable: (compañero) -->
-        <section id="git" class="seccion pendiente">
+<!-- ▼ SECCIÓN: git · responsable: (albert) -->
+    <section id="git" class="seccion">
           <h2>La ACS en la práctica: Git y GitHub</h2>
-          <p class="pendiente-nota">Sección en desarrollo en la rama <code>rama-companero</code>.</p>
+          <p>Este sitio no solo explica la ACS: también se construyó aplicándola. Cada concepto de Pressman tiene un equivalente en las herramientas que usamos:</p>
+
+          <div class="tabla-scroll">
+            <table class="tabla-mapa">
+              <thead><tr><th>Concepto ACS (Pressman)</th><th>Equivalente en Git / GitHub</th><th>Cómo lo usamos aquí</th></tr></thead>
+              <tbody>
+                <tr><td>ICS</td><td>Archivos del repositorio</td><td><code>index.html</code>, <code>styles.css</code>, <code>script.js</code>, imágenes</td></tr>
+                <tr><td>Repositorio</td><td>Repositorio Git en GitHub</td><td>Contiene todo el proyecto y su historial</td></tr>
+                <tr><td>Identificación</td><td>Rutas de archivo y <em>hash</em> de cada commit</td><td>Estructura de carpetas definida desde el primer commit</td></tr>
+                <tr><td>Línea base</td><td>Rama <code>main</code> y etiquetas (<em>tags</em>)</td><td>Solo cambia mediante Pull Requests; versión final <code>v1.0</code></td></tr>
+                <tr><td>Petición de cambio</td><td>Issue</td><td>Un Issue por cada sección asignada</td></tr>
+                <tr><td>OCI</td><td>Pull Request</td><td>Describe el cambio y enlaza el Issue (<code>Closes #1</code>)</td></tr>
+                <tr><td>ACC</td><td>Revisor que aprueba el PR</td><td>Cada integrante revisa el PR del otro</td></tr>
+                <tr><td>Check-out / check-in</td><td><code>git checkout -b</code> / <code>git push</code></td><td>Cada integrante trabaja en su rama</td></tr>
+                <tr><td>Control de sincronización</td><td>Ramas y <code>merge</code></td><td>Trabajo en paralelo sin sobrescribirse</td></tr>
+                <tr><td>Conjunto de cambio</td><td>Commit</td><td>Commits pequeños y descriptivos</td></tr>
+                <tr><td>Auditoría</td><td>Revisión del PR</td><td>Comentarios y aprobación antes del merge</td></tr>
+                <tr><td>Reporte de estado</td><td><code>git log</code>, Insights → Network</td><td>Historial visible para el profesor</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Nuestro flujo de trabajo</h3>
+          <figure class="figura-ancha">
+            <img src="assets/images/flujo-ramas.svg" alt="Diagrama de ramas: main se divide en dos ramas, una por integrante, que avanzan en paralelo y se integran con pull requests hasta la versión v1.0" width="800" height="300" loading="lazy">
+            <figcaption>Identificación → Cambio → Versionado → Integración → Auditoría → Reporte, aplicado con dos ramas en paralelo.</figcaption>
+          </figure>
+          <ol class="pasos-flujo">
+            <li><strong>Identificación:</strong> se creó la estructura base del proyecto en <code>main</code>.</li>
+            <li><strong>Cambio:</strong> se abrió un Issue por cada parte del trabajo.</li>
+            <li><strong>Versionado:</strong> cada integrante trabajó en su rama (<code>rama-johansell</code> y <code>rama-albert</code>) con commits descriptivos.</li>
+            <li><strong>Integración:</strong> cada rama se unió a <code>main</code> mediante un Pull Request.</li>
+            <li><strong>Auditoría:</strong> el otro integrante revisó y aprobó cada Pull Request.</li>
+            <li><strong>Reporte:</strong> se marcó la versión <code>v1.0</code> y el historial queda como registro.</li>
+          </ol>
         </section>
+
 <!-- ▲ FIN SECCIÓN: git -->
 
-<!-- ▼ SECCIÓN: conclusion · responsable: (compañero) -->
-        <section id="conclusion" class="seccion pendiente">
+<!-- ▼ SECCIÓN: conclusion · responsable: (albert) -->
+<section id="conclusion" class="seccion">
           <h2>Conclusión</h2>
-          <p class="pendiente-nota">Sección en desarrollo en la rama <code>rama-companero</code>.</p>
+          <p>La ACS parte de una idea sencilla: <strong>el cambio es inevitable, el desorden no</strong>. Las cinco tareas del proceso forman una cadena en la que cada una depende de la anterior. Sin identificación no se sabe qué cambiar; sin control de cambio cualquiera modifica cualquier cosa; sin control de versión no se puede volver atrás; sin auditoría no hay garantía de que el cambio esté bien hecho; y sin reporte nadie se entera de lo que pasó.</p>
+          <p>También aprendimos que la ACS es un <strong>equilibrio</strong>. Un proceso demasiado pesado frena al equipo, y uno demasiado ligero lo deja expuesto al caos. Por eso Pressman propone aumentar el control a medida que el software madura: informal al principio, de proyecto después de la línea base y formal cuando ya está en manos del cliente.</p>
+          <p>Por último, construir esta página con ramas, Pull Requests y revisiones nos mostró que herramientas como Git y GitHub son la forma moderna de aplicar los mismos principios que Pressman describe. Como en el caso de CasaSegura, la herramienta ayuda, pero lo que hace que funcione es el <strong>compromiso del equipo</strong> con el proceso.</p>
+
+          <div class="resumen-final">
+            <div><strong>Identificación</strong><span>¿Qué es?</span></div>
+            <div><strong>Control de cambio</strong><span>¿Se permite?</span></div>
+            <div><strong>Control de versión</strong><span>¿Cuál versión?</span></div>
+            <div><strong>Auditoría</strong><span>¿Está bien?</span></div>
+            <div><strong>Reporte</strong><span>¿Quién se entera?</span></div>
+          </div>
         </section>
+
 <!-- ▲ FIN SECCIÓN: conclusion -->
 
-<!-- ▼ SECCIÓN: quiz · responsable: (compañero) -->
-        <section id="quiz" class="seccion pendiente">
+<!-- ▼ SECCIÓN: quiz · responsable: (albert) -->
+    <section id="quiz" class="seccion">
           <h2>Pon a prueba lo aprendido</h2>
-          <p class="pendiente-nota">Sección en desarrollo en la rama <code>rama-companero</code>.</p>
+          <p>Responde estas preguntas para repasar los conceptos principales de la ACS.</p>
+          <div class="quiz" id="quiz">
+            <noscript><p>Activa JavaScript para usar el quiz.</p></noscript>
+          </div>
         </section>
+
 <!-- ▲ FIN SECCIÓN: quiz -->
 
-<!-- ▼ SECCIÓN: referencias · responsable: (compañero) -->
-        <section id="referencias" class="seccion pendiente">
+<!-- ▼ SECCIÓN: referencias · responsable: (albert) -->
+        <section id="referencias" class="seccion">
           <h2>Referencias bibliográficas</h2>
-          <p class="pendiente-nota">Sección en desarrollo en la rama <code>rama-companero</code>.</p>
+          <ul class="referencias">
+            <li>Pressman, R. S. (2010). <em>Ingeniería del software: un enfoque práctico</em> (7.ª ed.). McGraw-Hill. Capítulo 22: Administración de la configuración del software, sección 22.3 "El proceso ACS", pp. 508–515.</li>
+            <li>Chacon, S. y Straub, B. (2014). <em>Pro Git</em> (2.ª ed.). Apress. Disponible en <a href="https://git-scm.com/book/es/v2" target="_blank" rel="noopener">git-scm.com/book/es/v2</a>.</li>
+            <li>GitHub. (s. f.). <em>Documentación de GitHub Pages</em>. <a href="https://docs.github.com/es/pages" target="_blank" rel="noopener">docs.github.com/es/pages</a>.</li>
+          </ul>
+
+          <div class="citar">
+            <p class="citar-titulo">¿Cómo citar este resumen?</p>
+            <p id="textoCita">Johansell Alfonso Pérez Feliz y Albert Garcia. (2026). <em>Administración de la Configuración del Software (ACS): resumen de la sección 22.3 de Pressman</em>. GitHub Pages.</p>
+            <button type="button" class="btn" id="btnCopiarCita">Copiar cita</button>
+          </div>
         </section>
+
 <!-- ▲ FIN SECCIÓN: referencias -->
 
         <section class="util" aria-labelledby="utilTitulo">
@@ -348,7 +569,7 @@ Date:   Sat Oct 10 2026
           <dl>
             <dt>Asignatura</dt><dd>Ingeniería de Software</dd>
             <dt>Fuente</dt><dd>Pressman, cap. 22.3</dd>
-            <dt>Integrantes</dt><dd>Johansell Alfonso Pérez Feliz<br>(compañero)</dd>
+            <dt>Integrantes</dt><dd>Johansell Alfonso Pérez Feliz<br>(albert)</dd>
             <dt>Versión</dt><dd><code>v1.0</code></dd>
           </dl>
         </div>
@@ -362,7 +583,7 @@ Date:   Sat Oct 10 2026
       <p><strong>Proyecto ACS</strong><br>Resumen de la sección 22.3 de Pressman</p>
     </div>
     <div class="footer-info">
-      <p>Elaborado por Johansell Alfonso Pérez Feliz y (compañero).</p>
+      <p>Elaborado por Johansell Alfonso Pérez Feliz y (albert).</p>
       <p>Construido de forma colaborativa con Git y GitHub · Publicado con GitHub Pages.</p>
     </div>
   </footer>

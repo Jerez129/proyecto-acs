@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" font-family="Arial, Helvetica, sans-serif">
+  <rect width="800" height="300" fill="#ffffff"/>
+  <g fill="none" stroke-width="6" stroke-linecap="round">
+    <path d="M50 150H750" stroke="#111"/>
+    <path d="M120 150C170 150 170 70 220 70H440C490 70 490 150 540 150" stroke="#e84e2b"/>
+    <path d="M160 150C210 150 210 230 260 230H560C610 230 610 150 660 150" stroke="#2bc5e8"/>
+  </g>
+  <g stroke-width="4">
+    <g fill="#fff" stroke="#111"><circle cx="50" cy="150" r="11"/><circle cx="120" cy="150" r="11"/><circle cx="160" cy="150" r="11"/></g>
+    <g fill="#e84e2b" stroke="#fff"><circle cx="260" cy="70" r="11"/><circle cx="330" cy="70" r="11"/><circle cx="400" cy="70" r="11"/></g>
+    <g fill="#2bc5e8" stroke="#fff"><circle cx="300" cy="230" r="11"/><circle cx="380" cy="230" r="11"/><circle cx="460" cy="230" r="11"/><circle cx="530" cy="230" r="11"/></g>
+    <g fill="#111" stroke="#fff"><circle cx="540" cy="150" r="14"/><circle cx="660" cy="150" r="14"/></g>
+    <circle cx="750" cy="150" r="16" fill="#f7e731" stroke="#111"/>
+  </g>
+  <g font-size="13" font-weight="700" fill="#111">
+    <text x="50" y="185" text-anchor="middle">main</text>
+    <text x="50" y="202" text-anchor="middle" font-weight="400">estructura</text>
+    <text x="330" y="40" text-anchor="middle" fill="#e84e2b">rama del integrante 1</text>
+    <text x="415" y="275" text-anchor="middle" fill="#1688a3">rama del integrante 2</text>
+    <text x="540" y="128" text-anchor="middle">PR #1</text>
+    <text x="660" y="128" text-anchor="middle">PR #2</text>
+    <text x="750" y="190" text-anchor="middle">v1.0</text>
+  </g>
+</svg>
