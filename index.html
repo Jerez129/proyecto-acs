@@ -224,10 +224,59 @@ ModeloDatos        &lt;interrelacionado&gt;  CasoPruebaClaseM</code></pre>
 <!-- ▲ FIN SECCIÓN: identificacion -->
 
 <!-- ▼ SECCIÓN: version · responsable: Johansell Alfonso Pérez Feliz -->
-        <section id="version" class="seccion pendiente">
+              <section id="version" class="seccion">
           <h2>Control de versión</h2>
-          <p class="pendiente-nota">Sección en desarrollo en la rama <code>rama-johansell</code>.</p>
+          <p class="subtitulo-seccion">Sección 22.3.2</p>
+          <p>El control de versión combina <strong>procedimientos y herramientas</strong> para administrar las distintas versiones de los objetos de configuración que se crean durante el proceso de software. Gracias a él se puede volver a cualquier estado anterior del proyecto o construir una versión específica cuando se necesite.</p>
+
+          <h3>Capacidades de un sistema de control de versión</h3>
+          <div class="capacidades">
+            <div class="capacidad"><span class="cap-icono" aria-hidden="true">🗄️</span><h4>Repositorio</h4><p>Base de datos del proyecto que guarda todos los objetos de configuración relevantes.</p></div>
+            <div class="capacidad"><span class="cap-icono" aria-hidden="true">🕓</span><h4>Gestión de versiones</h4><p>Guarda todas las versiones de cada objeto, o las reconstruye a partir de las diferencias con versiones anteriores.</p></div>
+            <div class="capacidad"><span class="cap-icono" aria-hidden="true">🛠️</span><h4>Facilidad de construcción</h4><p>Reúne los objetos correctos y construye una versión específica del software.</p></div>
+            <div class="capacidad"><span class="cap-icono" aria-hidden="true">🐞</span><h4>Rastreo de problemas</h4><p>Registra el estado de los errores y conflictos pendientes de cada objeto (rastreador de errores).</p></div>
+          </div>
+
+          <h3>Conjuntos de cambio y modelo del sistema</h3>
+          <p>Algunos sistemas trabajan con <strong>conjuntos de cambio</strong> (<em>change sets</em>): la colección de todos los cambios necesarios para crear una versión concreta a partir de una configuración base. Un conjunto de cambio registra <strong>qué cambió en cada archivo, por qué, quién lo hizo y cuándo</strong>.</p>
+          <p>Si a esos conjuntos se les da un nombre, se puede construir una versión indicando qué conjuntos aplicar sobre la base. Para eso se usa un <strong>modelo del sistema</strong>, que contiene:</p>
+          <ul class="lista-check">
+            <li>Una <strong>plantilla</strong> con la jerarquía de componentes y el orden en que deben construirse.</li>
+            <li>Las <strong>reglas de construcción</strong>.</li>
+            <li>Las <strong>reglas de verificación</strong>.</li>
+          </ul>
+
+          <div class="ejemplo">
+            <p class="ejemplo-titulo">Ejemplo: un commit es un conjunto de cambio</p>
+            <pre class="codigo"><code><span class="c-comando">$ git show --stat a1b2c3d</span>
+commit a1b2c3d
+Author: Johansell Alfonso Pérez Feliz
+Date:   Sat Oct 10 2026
+
+    feat: agrega sección de control de versión
+
+ index.html     | 48 ++++++++++++
+ css/styles.css | 22 ++++++
+ 2 files changed, 70 insertions(+)</code></pre>
+            <p>Un solo commit agrupa los cambios en varios archivos y guarda <strong>quién, cuándo y por qué</strong>, justo lo que Pressman describe como conjunto de cambio.</p>
+          </div>
+
+          <h3>De CVS a Git</h3>
+          <p>Pressman presenta el <strong>Sistema de Versiones Concurrentes (CVS)</strong> como herramienta representativa. Hoy la herramienta más usada es Git, que sigue las mismas ideas pero las lleva más lejos:</p>
+          <div class="tabla-scroll">
+            <table>
+              <thead><tr><th>Aspecto</th><th>CVS (según Pressman)</th><th>Git (actual)</th></tr></thead>
+              <tbody>
+                <tr><td>Repositorio</td><td>Un repositorio central (cliente-servidor).</td><td>Distribuido: cada desarrollador tiene una copia completa.</td></tr>
+                <tr><td>Almacenamiento</td><td>Guarda solo las diferencias entre versiones de un archivo.</td><td>Guarda "fotos" (snapshots) del proyecto completo en cada commit.</td></tr>
+                <tr><td>Trabajo en paralelo</td><td>Aísla a cada desarrollador en su propio directorio y luego mezcla los cambios.</td><td>Usa ramas (<em>branches</em>) ligeras y luego las integra con <code>merge</code>.</td></tr>
+                <tr><td>Construcción</td><td>No construye versiones; necesita herramientas como Makefile.</td><td>Tampoco construye; se apoya en herramientas de integración continua (por ejemplo, GitHub Actions).</td></tr>
+                <tr><td>Control de cambio</td><td>No implementa solicitudes de cambio ni rastreo de errores.</td><td>Git tampoco, pero GitHub lo completa con Issues y Pull Requests.</td></tr>
+              </tbody>
+            </table>
+          </div>
         </section>
+
 <!-- ▲ FIN SECCIÓN: version -->
 
 <!-- ▼ SECCIÓN: cambio · responsable: (compañero) -->
