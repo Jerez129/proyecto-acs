@@ -12,7 +12,7 @@ Resumen interactivo de la **sección 22.3 "El proceso ACS"** del libro *Ingenier
 | Integrante | Usuario de GitHub | Rama |
 |---|---|---|
 | Johansell Alfonso Pérez Feliz | [@Jerez129](https://github.com/Jerez129) | `rama-johansell` |
-| Albert Garcia | *(usuario de Albert)* | `rama-albert` |
+| Albert García | [Albert Garcia](https://github.com/AlbertFrank-commins)| `rama-Albert` |
 
 ---
 
