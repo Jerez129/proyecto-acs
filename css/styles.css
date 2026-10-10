@@ -206,6 +206,33 @@ tbody tr:nth-child(even) { background: #f7f7f7; }
 .cita footer { font-size: .82rem; color: var(--texto-suave); }
 
 
+/* --- Diagrama interactivo de capas --- */
+.capas-interactivo { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.5rem; align-items: center; margin-top: 1rem; }
+.capas-figura { margin: 0; }
+.capas-figura svg { width: 100%; max-width: 400px; margin: 0 auto; display: block; }
+.anillo circle, .nucleo circle { stroke: var(--blanco); stroke-width: 3; cursor: pointer; transition: fill .2s; }
+.anillo[data-capa="reporte"] circle { fill: #fde3dc; }
+.anillo[data-capa="auditoria"] circle { fill: #fbc7b9; }
+.anillo[data-capa="version"] circle { fill: #f8a48f; }
+.anillo[data-capa="cambio"] circle { fill: #f17e62; }
+.anillo[data-capa="identificacion"] circle { fill: #ea6040; }
+.nucleo circle { fill: var(--texto); }
+.anillo text, .nucleo text { font-family: var(--fuente-texto); font-size: 13px; font-weight: 700; text-anchor: middle; pointer-events: none; fill: var(--texto); }
+.anillo[data-capa="cambio"] text, .anillo[data-capa="identificacion"] text, .nucleo text { fill: var(--blanco); }
+.anillo:hover circle, .nucleo:hover circle { fill: var(--azul); }
+.anillo.activa circle, .nucleo.activa circle { fill: var(--azul); }
+.anillo:focus, .nucleo:focus { outline: none; }
+.anillo:focus-visible circle, .nucleo:focus-visible circle { stroke: var(--texto); }
+.capas-panel { background: var(--fondo); border-radius: var(--radio); padding: 1.5rem; min-height: 14rem; border-top: 4px solid var(--naranja); }
+.capas-panel-etiqueta { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--naranja); margin-bottom: .2rem; }
+.capas-panel h3 { margin-top: 0; }
+.capas-ejemplo { font-size: .9rem; background: var(--blanco); border-radius: var(--radio-sm); padding: .75rem 1rem; margin: 0; }
+
+@media (max-width: 48em) {
+  .capas-interactivo { grid-template-columns: 1fr; }
+}
+
+
 /* ===== FIN: estilos de la parte 1 ===== */
 
 /* ===== INICIO: estilos de la parte 2 (rama-companero) ===== */
