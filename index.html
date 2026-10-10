@@ -93,7 +93,7 @@
         </section>
 <!-- ▲ FIN SECCIÓN: version -->
 
-<!-- ▼ SECCIÓN: cambio · responsable: (compañero) -->
+<!-- ▼ SECCIÓN: cambio · responsable: (albert) -->
   <section id="cambio" class="seccion">
           <h2>Control de cambio</h2>
           <p class="subtitulo-seccion">Sección 22.3.3</p>
@@ -193,7 +193,7 @@
 >
 <!-- ▲ FIN SECCIÓN: cambio -->
 
-<!-- ▼ SECCIÓN: auditoria · responsable: (compañero) -->
+<!-- ▼ SECCIÓN: auditoria · responsable: (albert) -->
   <section id="auditoria" class="seccion">
           <h2>Auditoría de la configuración</h2>
           <p class="subtitulo-seccion">Sección 22.3.4</p>
@@ -229,7 +229,7 @@
 
 <!-- ▲ FIN SECCIÓN: auditoria -->
 
-<!-- ▼ SECCIÓN: reporte · responsable: (compañero) -->
+<!-- ▼ SECCIÓN: reporte · responsable: (albert) -->
 <section id="reporte" class="seccion">
           <h2>Reporte de estado de la configuración (REC)</h2>
           <p class="subtitulo-seccion">Sección 22.3.5</p>
@@ -274,7 +274,7 @@
 
 <!-- ▲ FIN SECCIÓN: reporte -->
 
-<!-- ▼ SECCIÓN: git · responsable: (compañero) -->
+<!-- ▼ SECCIÓN: git · responsable: (albert) -->
     <section id="git" class="seccion">
           <h2>La ACS en la práctica: Git y GitHub</h2>
           <p>Este sitio no solo explica la ACS: también se construyó aplicándola. Cada concepto de Pressman tiene un equivalente en las herramientas que usamos:</p>
@@ -316,25 +316,51 @@
 
 <!-- ▲ FIN SECCIÓN: git -->
 
-<!-- ▼ SECCIÓN: conclusion · responsable: (compañero) -->
-        <section id="conclusion" class="seccion pendiente">
+<!-- ▼ SECCIÓN: conclusion · responsable: (albert) -->
+<section id="conclusion" class="seccion">
           <h2>Conclusión</h2>
-          <p class="pendiente-nota">Sección en desarrollo en la rama <code>rama-companero</code>.</p>
+          <p>La ACS parte de una idea sencilla: <strong>el cambio es inevitable, el desorden no</strong>. Las cinco tareas del proceso forman una cadena en la que cada una depende de la anterior. Sin identificación no se sabe qué cambiar; sin control de cambio cualquiera modifica cualquier cosa; sin control de versión no se puede volver atrás; sin auditoría no hay garantía de que el cambio esté bien hecho; y sin reporte nadie se entera de lo que pasó.</p>
+          <p>También aprendimos que la ACS es un <strong>equilibrio</strong>. Un proceso demasiado pesado frena al equipo, y uno demasiado ligero lo deja expuesto al caos. Por eso Pressman propone aumentar el control a medida que el software madura: informal al principio, de proyecto después de la línea base y formal cuando ya está en manos del cliente.</p>
+          <p>Por último, construir esta página con ramas, Pull Requests y revisiones nos mostró que herramientas como Git y GitHub son la forma moderna de aplicar los mismos principios que Pressman describe. Como en el caso de CasaSegura, la herramienta ayuda, pero lo que hace que funcione es el <strong>compromiso del equipo</strong> con el proceso.</p>
+
+          <div class="resumen-final">
+            <div><strong>Identificación</strong><span>¿Qué es?</span></div>
+            <div><strong>Control de cambio</strong><span>¿Se permite?</span></div>
+            <div><strong>Control de versión</strong><span>¿Cuál versión?</span></div>
+            <div><strong>Auditoría</strong><span>¿Está bien?</span></div>
+            <div><strong>Reporte</strong><span>¿Quién se entera?</span></div>
+          </div>
         </section>
+
 <!-- ▲ FIN SECCIÓN: conclusion -->
 
-<!-- ▼ SECCIÓN: quiz · responsable: (compañero) -->
-        <section id="quiz" class="seccion pendiente">
+<!-- ▼ SECCIÓN: quiz · responsable: (albert) -->
+    <section id="quiz" class="seccion">
           <h2>Pon a prueba lo aprendido</h2>
-          <p class="pendiente-nota">Sección en desarrollo en la rama <code>rama-companero</code>.</p>
+          <p>Responde estas preguntas para repasar los conceptos principales de la ACS.</p>
+          <div class="quiz" id="quiz">
+            <noscript><p>Activa JavaScript para usar el quiz.</p></noscript>
+          </div>
         </section>
+
 <!-- ▲ FIN SECCIÓN: quiz -->
 
-<!-- ▼ SECCIÓN: referencias · responsable: (compañero) -->
-        <section id="referencias" class="seccion pendiente">
+<!-- ▼ SECCIÓN: referencias · responsable: (albert) -->
+        <section id="referencias" class="seccion">
           <h2>Referencias bibliográficas</h2>
-          <p class="pendiente-nota">Sección en desarrollo en la rama <code>rama-companero</code>.</p>
+          <ul class="referencias">
+            <li>Pressman, R. S. (2010). <em>Ingeniería del software: un enfoque práctico</em> (7.ª ed.). McGraw-Hill. Capítulo 22: Administración de la configuración del software, sección 22.3 "El proceso ACS", pp. 508–515.</li>
+            <li>Chacon, S. y Straub, B. (2014). <em>Pro Git</em> (2.ª ed.). Apress. Disponible en <a href="https://git-scm.com/book/es/v2" target="_blank" rel="noopener">git-scm.com/book/es/v2</a>.</li>
+            <li>GitHub. (s. f.). <em>Documentación de GitHub Pages</em>. <a href="https://docs.github.com/es/pages" target="_blank" rel="noopener">docs.github.com/es/pages</a>.</li>
+          </ul>
+
+          <div class="citar">
+            <p class="citar-titulo">¿Cómo citar este resumen?</p>
+            <p id="textoCita">Johansell Alfonso Pérez Feliz y Albert Garcia. (2026). <em>Administración de la Configuración del Software (ACS): resumen de la sección 22.3 de Pressman</em>. GitHub Pages.</p>
+            <button type="button" class="btn" id="btnCopiarCita">Copiar cita</button>
+          </div>
         </section>
+
 <!-- ▲ FIN SECCIÓN: referencias -->
 
         <section class="util" aria-labelledby="utilTitulo">
@@ -357,7 +383,7 @@
           <dl>
             <dt>Asignatura</dt><dd>Ingeniería de Software</dd>
             <dt>Fuente</dt><dd>Pressman, cap. 22.3</dd>
-            <dt>Integrantes</dt><dd>Johansell Alfonso Pérez Feliz<br>(compañero)</dd>
+            <dt>Integrantes</dt><dd>Johansell Alfonso Pérez Feliz<br>(albert)</dd>
             <dt>Versión</dt><dd><code>v1.0</code></dd>
           </dl>
         </div>
@@ -371,7 +397,7 @@
       <p><strong>Proyecto ACS</strong><br>Resumen de la sección 22.3 de Pressman</p>
     </div>
     <div class="footer-info">
-      <p>Elaborado por Johansell Alfonso Pérez Feliz y (compañero).</p>
+      <p>Elaborado por Johansell Alfonso Pérez Feliz y (albert).</p>
       <p>Construido de forma colaborativa con Git y GitHub · Publicado con GitHub Pages.</p>
     </div>
   </footer>

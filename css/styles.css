@@ -198,7 +198,7 @@ tbody tr:nth-child(even) { background: #f7f7f7; }
 /* pendiente */
 /* ===== FIN: estilos de la parte 1 ===== */
 
-/* ===== INICIO: estilos de la parte 2 (rama-companero) ===== */
+/* ===== INICIO: estilos de la parte 2 (rama-albert) ===== */
 /* --- Flujo del control de cambio --- */
 .flujo { background: var(--fondo); border-radius: var(--radio); padding: 1.25rem; margin: 1rem 0 1.5rem; }
 .flujo-controles { display: flex; align-items: center; justify-content: space-between; gap: .75rem; flex-wrap: wrap; margin-bottom: 1rem; }
@@ -236,6 +236,32 @@ tbody tr:nth-child(even) { background: #f7f7f7; }
 .figura-ancha img { width: 100%; border-radius: var(--radio); border: 1px solid var(--borde); }
 .pasos-flujo li { margin-bottom: .4rem; }
 
+/* --- Conclusión --- */
+.resumen-final { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: .5rem; margin-top: 1.5rem; }
+.resumen-final div { background: var(--fondo); border-bottom: 4px solid var(--naranja); border-radius: var(--radio-sm); padding: .8rem; text-align: center; }
+.resumen-final strong { display: block; font-size: .85rem; }
+.resumen-final span { font-family: var(--fuente-titulos); font-style: italic; color: var(--texto-suave); }
+
+/* --- Quiz --- */
+.quiz-pregunta { background: var(--fondo); border-radius: var(--radio); padding: 1.25rem; }
+.quiz-progreso { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--naranja); margin-bottom: .3rem; }
+.quiz-enunciado { font-family: var(--fuente-titulos); font-size: 1.25rem; margin-bottom: 1rem; }
+.quiz-opciones { display: grid; gap: .5rem; }
+.quiz-opcion { text-align: left; font-family: var(--fuente-texto); font-size: .95rem; padding: .75rem 1rem; border-radius: var(--radio-sm); border: 2px solid var(--borde); background: var(--blanco); cursor: pointer; transition: border-color .15s; }
+.quiz-opcion:hover:not(:disabled) { border-color: var(--naranja); }
+.quiz-opcion.correcta { border-color: #2e9d5b; background: #e8f7ee; }
+.quiz-opcion.incorrecta { border-color: #d0342c; background: #fdecea; }
+.quiz-opcion:disabled { cursor: default; }
+.quiz-explicacion { margin: 1rem 0 0; font-size: .92rem; background: var(--blanco); border-radius: var(--radio-sm); padding: .8rem 1rem; }
+.quiz-acciones { margin-top: 1rem; display: flex; justify-content: flex-end; }
+.quiz-final { text-align: center; padding: 1.5rem; }
+.quiz-puntaje { font-family: var(--fuente-titulos); font-size: 3rem; color: var(--naranja); margin: 0; }
+
+/* --- Referencias y cita --- */
+.referencias { padding-left: 1.2rem; }
+.referencias li { margin-bottom: .7rem; padding-left: .3rem; }
+.citar { background: var(--fondo); border-radius: var(--radio); padding: 1.25rem; margin-top: 1.5rem; }
+.citar p { font-size: .92rem; }
 /* ===== FIN: estilos de la parte 2 ===== */
 
 /* ---------- Diseño adaptable (responsive) ---------- */
