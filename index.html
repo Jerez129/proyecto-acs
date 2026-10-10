@@ -171,10 +171,56 @@
 <!-- ▲ FIN SECCIÓN: capas -->
 
 <!-- ▼ SECCIÓN: identificacion · responsable: Johansell Alfonso Pérez Feliz -->
-        <section id="identificacion" class="seccion pendiente">
+              <section id="identificacion" class="seccion">
           <h2>Identificación de objetos de la configuración</h2>
-          <p class="pendiente-nota">Sección en desarrollo en la rama <code>rama-johansell</code>.</p>
+          <p class="subtitulo-seccion">Sección 22.3.1</p>
+          <p>No se puede controlar algo que no tiene nombre. Por eso, el primer paso es <strong>nombrar cada ICS de forma única</strong> y organizarlo con un enfoque orientado a objetos. Pressman distingue dos tipos de objetos:</p>
+
+          <div class="comparacion">
+            <div class="tarjeta">
+              <p class="tarjeta-etiqueta">Tipo 1</p>
+              <h3>Objeto básico</h3>
+              <p>Una <strong>unidad de información</strong> creada durante el análisis, el diseño, la codificación o la prueba.</p>
+              <p class="ejemplo-linea"><strong>Ejemplos:</strong> una sección de la especificación de requisitos, el código de un componente, un conjunto de casos de prueba.</p>
+            </div>
+            <div class="tarjeta">
+              <p class="tarjeta-etiqueta">Tipo 2</p>
+              <h3>Objeto agregado</h3>
+              <p>Una <strong>colección</strong> de objetos básicos y de otros objetos agregados. Funciona como una lista con nombre de punteros hacia sus partes.</p>
+              <p class="ejemplo-linea"><strong>Ejemplo:</strong> una <em>Especificación de diseño</em> que agrupa el modelo arquitectónico, el modelo de datos y varios diagramas de clase.</p>
+            </div>
+          </div>
+
+          <h3>¿Qué características identifican a un objeto?</h3>
+          <div class="tabla-scroll">
+            <table>
+              <thead><tr><th>Característica</th><th>Qué significa</th><th>Ejemplo en este proyecto</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Nombre</strong></td><td>Cadena de texto que identifica el objeto sin ambigüedad.</td><td><code>css/styles.css</code></td></tr>
+                <tr><td><strong>Descripción</strong></td><td>Datos que indican el tipo de ICS, el proyecto al que pertenece y su información de cambio o versión.</td><td>Hoja de estilos · proyecto-acs · v1.0</td></tr>
+                <tr><td><strong>Recursos</strong></td><td>Lo que el objeto usa, procesa o necesita: tipos de datos, funciones o variables.</td><td>Variables CSS como <code>--naranja</code></td></tr>
+                <tr><td><strong>Realización</strong></td><td>Puntero al contenido real (la "unidad de texto"). En un objeto agregado es nulo, porque solo agrupa a otros.</td><td>El texto del archivo</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Relaciones entre objetos</h3>
+          <p>Identificar también significa registrar <strong>cómo se relacionan</strong> los objetos. Con una notación sencilla se puede construir una jerarquía:</p>
+          <pre class="codigo"><code>DiagramaClase      &lt;parte de&gt;          ModeloRequisitos
+ModeloRequisitos   &lt;parte de&gt;          EspecificaciónRequisitos
+ModeloDatos        &lt;interrelacionado&gt;  ModeloFlujoDatos
+ModeloDatos        &lt;interrelacionado&gt;  CasoPruebaClaseM</code></pre>
+          <p>La relación <code>&lt;parte de&gt;</code> crea la jerarquía. La relación <code>&lt;interrelacionado&gt;</code> conecta objetos de ramas distintas de esa jerarquía. Estas relaciones son muy útiles para <strong>analizar el impacto de un cambio</strong>: si se modifica el modelo de datos, se sabe qué otros objetos hay que revisar.</p>
+
+          <div class="ejemplo">
+            <p class="ejemplo-titulo">Ejemplo aplicado: nuestro repositorio</p>
+            <img src="assets/images/jerarquia-ics.svg" alt="Jerarquía de ICS del proyecto: el sitio web es un objeto agregado que contiene index.html, la carpeta css, la carpeta js y la carpeta assets" width="720" height="300" loading="lazy">
+            <p>El <strong>sitio web</strong> completo es un objeto agregado. <code>index.html</code>, <code>styles.css</code> y <code>script.js</code> son objetos básicos. Git identifica cada versión de cada archivo con un código único (el <em>hash</em> del commit).</p>
+          </div>
+
+          <p class="nota">Los objetos evolucionan: antes de convertirse en línea base pueden cambiar muchas veces, e incluso después de ser aprobados siguen recibiendo cambios. El esquema de identificación debe tenerlo en cuenta.</p>
         </section>
+
 <!-- ▲ FIN SECCIÓN: identificacion -->
 
 <!-- ▼ SECCIÓN: version · responsable: Johansell Alfonso Pérez Feliz -->
